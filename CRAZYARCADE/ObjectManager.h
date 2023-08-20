@@ -20,14 +20,14 @@ public:
 	
 	void AddObject(GameObject* obj, OBJTYPE type);
 
-	static ObjectManager* Get_Instance()
+	static ObjectManager* GetInstance()
 	{
 		if (nullptr == Instance)
 			Instance = new ObjectManager;
 
 		return Instance;
 	}
-	static void Destory_Instance()
+	static void DestoryInstance()
 	{
 		if (Instance)
 		{

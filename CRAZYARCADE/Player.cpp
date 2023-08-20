@@ -1,8 +1,7 @@
 #include "Player.h"
 #include "BmpManager.h"
-//#include "WaterBalloon.h"
-//#include "Scene.h"
-//#include "SceneManager.h"
+#include "WaterBalloon.h"
+#include "ObjectManager.h"
 
 Player::Player()
     :Speed(8.0f)
@@ -119,11 +118,10 @@ void Player::Release()
 
 void Player::CreateBalloon()
 {
-    /*balloon = new WaterBalloon();
+    WaterBalloon* balloon = new WaterBalloon();
     balloon->SetPos((int)((Pos.x + 5) / 40) * 40 + 20, (int)((Pos.y + 19) / 40) * 40 + 40);
 
-    Scene* CurScene = SceneManager::GetInstance()->GetCurScene();
-    CurScene->addObject(balloon, OBJTYPE::BALLOON);*/
+    ObjectManager::GetInstance()->AddObject(balloon, OBJTYPE::BALLOON);
 }
 
 
