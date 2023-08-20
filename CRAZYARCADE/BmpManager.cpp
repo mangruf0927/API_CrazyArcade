@@ -48,18 +48,3 @@ void BmpManager::Release()
 	MapBmp.clear();
 }
 
-BmpManager* BmpManager::getInstance()
-{
-	if (nullptr == Instance)
-		Instance = new BmpManager;
-	return Instance;
-}
-
-void BmpManager::DestroyInstance()
-{
-	if (Instance)
-	{
-		delete Instance;
-		Instance = nullptr;
-	}
-}

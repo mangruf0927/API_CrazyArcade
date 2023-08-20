@@ -11,17 +11,17 @@ WaterBalloon::~WaterBalloon()
 
 void WaterBalloon::Init()
 {
-    BmpManager::getInstance()->InsertBmp(L"Balloon", L"Image/balloons/Bubble.bmp"); // 스프라이트 4개
+    BmpManager::GetInstance()->InsertBmp(L"Balloon", L"Image/balloons/Bubble.bmp"); // 스프라이트 4개
 
-    BmpManager::getInstance()->InsertBmp(L"Center", L"Image/balloons/center.bmp"); // 스프라이트 6개
-    BmpManager::getInstance()->InsertBmp(L"Down1", L"Image/balloons/down1.bmp"); // 스프라이트 11개
-    BmpManager::getInstance()->InsertBmp(L"Down2", L"Image/balloons/down2.bmp");
-    BmpManager::getInstance()->InsertBmp(L"Right1", L"Image/balloons/right1.bmp");
-    BmpManager::getInstance()->InsertBmp(L"Right2", L"Image/balloons/right2.bmp");
-    BmpManager::getInstance()->InsertBmp(L"Left1", L"Image/balloons/left2.bmp");
-    BmpManager::getInstance()->InsertBmp(L"Left2", L"Image/balloons/left2.bmp");
-    BmpManager::getInstance()->InsertBmp(L"Up1", L"Image/balloons/up1.bmp");
-    BmpManager::getInstance()->InsertBmp(L"Up2", L"Image/balloons/up2.bmp");
+    BmpManager::GetInstance()->InsertBmp(L"Center", L"Image/balloons/center.bmp"); // 스프라이트 6개
+    BmpManager::GetInstance()->InsertBmp(L"Down1", L"Image/balloons/down1.bmp"); // 스프라이트 11개
+    BmpManager::GetInstance()->InsertBmp(L"Down2", L"Image/balloons/down2.bmp");
+    BmpManager::GetInstance()->InsertBmp(L"Right1", L"Image/balloons/right1.bmp");
+    BmpManager::GetInstance()->InsertBmp(L"Right2", L"Image/balloons/right2.bmp");
+    BmpManager::GetInstance()->InsertBmp(L"Left1", L"Image/balloons/left2.bmp");
+    BmpManager::GetInstance()->InsertBmp(L"Left2", L"Image/balloons/left2.bmp");
+    BmpManager::GetInstance()->InsertBmp(L"Up1", L"Image/balloons/up1.bmp");
+    BmpManager::GetInstance()->InsertBmp(L"Up2", L"Image/balloons/up2.bmp");
 
     frameKey = L"Balloon";
 
@@ -54,7 +54,7 @@ void WaterBalloon::Render(HDC hdc)
         frame.Start = 0;
         frame.End = 3;
 
-        HDC memDC = BmpManager::getInstance()->FindImage(L"Balloon");
+        HDC memDC = BmpManager::GetInstance()->FindImage(L"Balloon");
         GdiTransparentBlt(hdc, Pos.x, Pos.y, 40, 40, memDC, frame.Cur * 56, 0, 56, 54, RGB(255, 0, 255));
     }
     if (frameKey == L"PopBalloon")
@@ -63,7 +63,7 @@ void WaterBalloon::Render(HDC hdc)
             frame.Start = 0;
             frame.End = 5;
 
-            memDC1 = BmpManager::getInstance()->FindImage(L"Center"); // 52 X 52
+            memDC1 = BmpManager::GetInstance()->FindImage(L"Center"); // 52 X 52
             GdiTransparentBlt(hdc, Pos.x, Pos.y, 40, 40, memDC1, frame.Cur * 52, 0, 52, 52, RGB(255, 0, 255));
         }
 
@@ -71,16 +71,16 @@ void WaterBalloon::Render(HDC hdc)
             frame.Start = 0;
             frame.End = 10;
 
-            memDC1 = BmpManager::getInstance()->FindImage(L"Down1");
+            memDC1 = BmpManager::GetInstance()->FindImage(L"Down1");
             GdiTransparentBlt(hdc, Pos.x, Pos.y + 40, 40, 40, memDC1, frame.Cur * 52, 0, 52, 52, RGB(255, 0, 255));
 
-            memDC1 = BmpManager::getInstance()->FindImage(L"Left1");
+            memDC1 = BmpManager::GetInstance()->FindImage(L"Left1");
             GdiTransparentBlt(hdc, Pos.x - 40, Pos.y, 40, 40, memDC1, frame.Cur * 52, 0, 52, 52, RGB(255, 0, 255));
 
-            memDC1 = BmpManager::getInstance()->FindImage(L"Right1");
+            memDC1 = BmpManager::GetInstance()->FindImage(L"Right1");
             GdiTransparentBlt(hdc, Pos.x + 40, Pos.y, 40, 40, memDC1, frame.Cur * 52, 0, 52, 52, RGB(255, 0, 255));
 
-            memDC1 = BmpManager::getInstance()->FindImage(L"Up1");
+            memDC1 = BmpManager::GetInstance()->FindImage(L"Up1");
             GdiTransparentBlt(hdc, Pos.x, Pos.y - 40, 40, 40, memDC1, frame.Cur * 52, 0, 52, 52, RGB(255, 0, 255));
         }
     }

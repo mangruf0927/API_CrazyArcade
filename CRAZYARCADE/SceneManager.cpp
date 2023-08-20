@@ -29,7 +29,7 @@ void SceneManager::Init()
 
 	//ÇöÀç ¾À ÁöÁ¤
 	curScene = Scenes[(UINT)SCENETYPE::STAGE1];
-	curScene->Enter();
+	curScene->Init();
 }
 
 void SceneManager::Update()

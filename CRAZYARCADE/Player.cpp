@@ -16,15 +16,15 @@ Player::~Player()
 void Player::Init()
 {
     // 65 X 76
-    BmpManager::getInstance()->InsertBmp(L"Idle", L"Image/player/Bazzi/jump.bmp");
-    BmpManager::getInstance()->InsertBmp(L"Down", L"Image/player/Bazzi/down.bmp");
-    BmpManager::getInstance()->InsertBmp(L"Left", L"Image/player/Bazzi/left.bmp");
-    BmpManager::getInstance()->InsertBmp(L"Right", L"Image/player/Bazzi/right.bmp");
-    BmpManager::getInstance()->InsertBmp(L"Up", L"Image/player/Bazzi/up.bmp");
-    BmpManager::getInstance()->InsertBmp(L"Trap", L"Image/player/Bazzi/trap.bmp");
-    BmpManager::getInstance()->InsertBmp(L"Die", L"Image/player/Bazzi/die.bmp");
-    BmpManager::getInstance()->InsertBmp(L"Live", L"Image/player/Bazzi/live.bmp");
-    BmpManager::getInstance()->InsertBmp(L"Arrow", L"Image/player/solo_player.bmp");
+    BmpManager::GetInstance()->InsertBmp(L"Idle", L"Image/player/Bazzi/jump.bmp");
+    BmpManager::GetInstance()->InsertBmp(L"Down", L"Image/player/Bazzi/down.bmp");
+    BmpManager::GetInstance()->InsertBmp(L"Left", L"Image/player/Bazzi/left.bmp");
+    BmpManager::GetInstance()->InsertBmp(L"Right", L"Image/player/Bazzi/right.bmp");
+    BmpManager::GetInstance()->InsertBmp(L"Up", L"Image/player/Bazzi/up.bmp");
+    BmpManager::GetInstance()->InsertBmp(L"Trap", L"Image/player/Bazzi/trap.bmp");
+    BmpManager::GetInstance()->InsertBmp(L"Die", L"Image/player/Bazzi/die.bmp");
+    BmpManager::GetInstance()->InsertBmp(L"Live", L"Image/player/Bazzi/live.bmp");
+    BmpManager::GetInstance()->InsertBmp(L"Arrow", L"Image/player/solo_player.bmp");
 
     frameKey = L"Idle";
 
@@ -66,14 +66,14 @@ void Player::Render(HDC hdc)
 {
     HDC memDC;
 
-    //HDC memDC3 = BmpManager::getInstance()->FindImage(L"Shadow");
+    //HDC memDC3 = BmpManager::GetInstance()->FindImage(L"Shadow");
     //GdiTransparentBlt(hdc, Info.Pos.x + 5, Info.Pos.y + 48, 40, 19, memDC3, 0, 0, 42, 19, RGB(255, 0, 255));
 
     if (frameKey == L"Idle")
     {
         frame.Start = 0;
         frame.End = 2;
-        memDC = BmpManager::getInstance()->FindImage(L"Idle");
+        memDC = BmpManager::GetInstance()->FindImage(L"Idle");
         GdiTransparentBlt(hdc, Pos.x, Pos.y, 50, 60, memDC, frame.Start * 64, 0, 64, 76, RGB(255, 0, 255));
         //Rectangle(hdc, Info.Pos.x + 5, Info.Pos.y + 20, Info.Pos.x + 45, Info.Pos.y + 60);
     }
@@ -81,14 +81,14 @@ void Player::Render(HDC hdc)
     {
         frame.Start = 0;
         frame.End = 7;
-        memDC = BmpManager::getInstance()->FindImage(L"Up");
+        memDC = BmpManager::GetInstance()->FindImage(L"Up");
         GdiTransparentBlt(hdc, Pos.x, Pos.y, 50, 60, memDC, frame.Cur * 64, 0, 64, 76, RGB(255, 0, 255));
     }
     if (frameKey == L"Right")
     {
         frame.Start = 0;
         frame.End = 5;
-        memDC = BmpManager::getInstance()->FindImage(L"Right");
+        memDC = BmpManager::GetInstance()->FindImage(L"Right");
         GdiTransparentBlt(hdc, Pos.x, Pos.y, 50, 60, memDC, frame.Cur * 64, 0, 64, 76, RGB(255, 0, 255));
 
     }
@@ -96,18 +96,18 @@ void Player::Render(HDC hdc)
     {
         frame.Start = 0;
         frame.End = 5;
-        memDC = BmpManager::getInstance()->FindImage(L"Left");
+        memDC = BmpManager::GetInstance()->FindImage(L"Left");
         GdiTransparentBlt(hdc, Pos.x, Pos.y, 50, 60, memDC, frame.Cur * 64, 0, 64, 76, RGB(255, 0, 255));
     }
     if (frameKey == L"Down")
     {
         frame.Start = 0;
         frame.End = 7;
-        memDC = BmpManager::getInstance()->FindImage(L"Down");
+        memDC = BmpManager::GetInstance()->FindImage(L"Down");
         GdiTransparentBlt(hdc, Pos.x, Pos.y, 50, 60, memDC, frame.Cur * 64, 0, 64, 76, RGB(255, 0, 255));
     }
 
-    HDC memDC2 = BmpManager::getInstance()->FindImage(L"Arrow");
+    HDC memDC2 = BmpManager::GetInstance()->FindImage(L"Arrow");
     GdiTransparentBlt(hdc, Pos.x + 14, Pos.y - 24, 20, 24, memDC2, 0, 0, 24, 28, RGB(255, 0, 255));
 
 
@@ -153,8 +153,8 @@ void Player::KeyUpdate()
         frameKey = L"Right";
     }
 
-    /*if (GetKeyState(VK_SPACE) & 0x8000)
+    if (GetKeyState(VK_SPACE) & 0x8000)
     {
         CreateBalloon();
-    }*/
+    }
 }

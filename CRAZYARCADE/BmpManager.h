@@ -17,7 +17,23 @@ public:
 	void InsertBmp(const TCHAR* ImgName, const TCHAR* File);
 	void Release();
 
-	static BmpManager* getInstance();
-	void DestroyInstance();
+
+	static BmpManager* GetInstance()
+	{
+		if (nullptr == Instance)
+			Instance = new BmpManager;
+
+		return Instance;
+	}
+
+	void DestroyInstance()
+	{
+		if (Instance)
+		{
+			delete Instance;
+			Instance = nullptr;
+		}
+	}
 };
+
 
