@@ -35,6 +35,8 @@ void Stage1::Render(HDC hdc)
 	HDC memDC = BmpManager::GetInstance()->FindImage(L"Background");
 	BitBlt(hdc, 0, 0, 800, 598, memDC, 0, 0, SRCCOPY);
 
+	
+
 	ObjectManager::GetInstance()->Render(hdc);
 }
 
