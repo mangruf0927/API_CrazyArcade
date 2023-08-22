@@ -7,6 +7,7 @@
 Player::Player()
     :Speed(5.0f)
 {
+    //CreateCollider();
 }
 
 Player::~Player()
@@ -21,9 +22,11 @@ void Player::Init()
     BmpManager::GetInstance()->InsertBmp(L"Left", L"Image/player/Bazzi/left.bmp");
     BmpManager::GetInstance()->InsertBmp(L"Right", L"Image/player/Bazzi/right.bmp");
     BmpManager::GetInstance()->InsertBmp(L"Up", L"Image/player/Bazzi/up.bmp");
+
     BmpManager::GetInstance()->InsertBmp(L"Trap", L"Image/player/Bazzi/trap.bmp");
     BmpManager::GetInstance()->InsertBmp(L"Die", L"Image/player/Bazzi/die.bmp");
     BmpManager::GetInstance()->InsertBmp(L"Live", L"Image/player/Bazzi/live.bmp");
+    
     BmpManager::GetInstance()->InsertBmp(L"Arrow", L"Image/player/solo_player.bmp");
 
     curState = L"Idle";
@@ -119,7 +122,7 @@ void Player::Release()
 
 void Player::CreateBalloon()
 {
-    GameObject* balloon = new WaterBalloon();
+    Object* balloon = new WaterBalloon();
     balloon->SetPos((int)((Pos.x + 5) / 40) * 40 + 20, (int)((Pos.y + 19) / 40) * 40 + 40);
     balloon->Init();
     ObjectManager::GetInstance()->AddObject(balloon, OBJTYPE::BALLOON);

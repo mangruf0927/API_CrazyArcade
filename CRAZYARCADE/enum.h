@@ -3,8 +3,8 @@
 enum class OBJTYPE
 {
 	DEFAULT, //0
-	PLAYER, //1
-	BALLOON, //2
+	BALLOON, //1
+	PLAYER, //2
 	MONSTER, //3
 	END
 };
@@ -12,7 +12,7 @@ enum class OBJTYPE
 enum class SCENETYPE
 {
 	START,
-	MENU,
+	LOBBY,
 	STAGE1,
 	STAGE2,
 	STAGE3,

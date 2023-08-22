@@ -1,5 +1,5 @@
 #include "Stage1.h"
-#include "GameObject.h"
+#include "Object.h"
 #include "Player.h"
 #include "BmpManager.h"
 #include "ObjectManager.h"
@@ -16,14 +16,21 @@ void Stage1::Init()
 {
 	BmpManager::GetInstance()->InsertBmp(L"Background", L"Image/map/Background.bmp");
 
-	GameObject* obj = new Player;
+	Object* obj = new Player;
 	obj->Init();
 	ObjectManager::GetInstance()->AddObject(obj, OBJTYPE::PLAYER);
+
+	startTime = GetTickCount();
 }
 
 void Stage1::Update()
 {
+	
 	ObjectManager::GetInstance()->Update();
+}
+
+void Stage1::LateUpdate()
+{
 }
 
 void Stage1::Render(HDC hdc)

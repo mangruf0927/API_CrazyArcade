@@ -1,8 +1,8 @@
 #pragma once
-#include "GameObject.h"
+#include "Object.h"
 
 // 64 X 76
-class Player :public GameObject
+class Player :public Object
 {
 private:
 	float Speed;  

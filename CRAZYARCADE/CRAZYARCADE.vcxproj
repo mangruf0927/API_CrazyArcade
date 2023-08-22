@@ -129,11 +129,12 @@
   <ItemGroup>
     <ClInclude Include="Bmp.h" />
     <ClInclude Include="BmpManager.h" />
+    <ClInclude Include="Collider.h" />
     <ClInclude Include="CRAZYARCADE.h" />
     <ClInclude Include="define.h" />
     <ClInclude Include="enum.h" />
     <ClInclude Include="framework.h" />
-    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Object.h" />
     <ClInclude Include="KeyManager.h" />
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="ObjectManager.h" />
@@ -143,16 +144,18 @@
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Stage1.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="Tile.h" />
     <ClInclude Include="WaterBalloon.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bmp.cpp" />
     <ClCompile Include="BmpManager.cpp" />
+    <ClCompile Include="Collider.cpp" />
     <ClCompile Include="CRAZYARCADE.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="Object.cpp" />
     <ClCompile Include="KeyManager.cpp" />
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="ObjectManager.cpp" />
@@ -160,6 +163,7 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Stage1.cpp" />
+    <ClCompile Include="Tile.cpp" />
     <ClCompile Include="WaterBalloon.cpp" />
   </ItemGroup>
   <ItemGroup>

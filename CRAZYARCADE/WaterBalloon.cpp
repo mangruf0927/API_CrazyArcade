@@ -3,6 +3,7 @@
 
 WaterBalloon::WaterBalloon()
 {
+    //CreateCollider();
 }
 
 WaterBalloon::~WaterBalloon()
@@ -39,6 +40,7 @@ void WaterBalloon::Update()
     }
     UpdateFrame(g_hWnd);
 }
+
 
 void WaterBalloon::Render(HDC hdc)
 {

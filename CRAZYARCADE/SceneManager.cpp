@@ -35,6 +35,7 @@ void SceneManager::Init()
 void SceneManager::Update()
 {
 	curScene->Update();
+	curScene->LateUpdate();
 }
 
 void SceneManager::Render(HDC hdc)

@@ -1,8 +1,8 @@
 #pragma once
-#include "GameObject.h"
+#include "Object.h"
 
 // 56 X 54
-class WaterBalloon : public GameObject
+class WaterBalloon : public Object
 {
 private:
 	const TCHAR* curState; // 물풍선 상태 
