@@ -1,7 +1,6 @@
 #include "BmpManager.h"
 #include "define.h"
 
-BmpManager* BmpManager::Instance = nullptr;
 BmpManager::BmpManager()
 {
 }

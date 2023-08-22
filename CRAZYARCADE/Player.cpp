@@ -2,9 +2,10 @@
 #include "BmpManager.h"
 #include "WaterBalloon.h"
 #include "ObjectManager.h"
+#include "KeyManager.h"
 
 Player::Player()
-    :Speed(8.0f)
+    :Speed(5.0f)
 {
 }
 
@@ -25,7 +26,7 @@ void Player::Init()
     BmpManager::GetInstance()->InsertBmp(L"Live", L"Image/player/Bazzi/live.bmp");
     BmpManager::GetInstance()->InsertBmp(L"Arrow", L"Image/player/solo_player.bmp");
 
-    frameKey = L"Idle";
+    curState = L"Idle";
 
     Pos = { 15, 20 };
     frame.Cur = frame.Start;
@@ -36,6 +37,7 @@ void Player::Init()
 void Player::Update()
 {
     KeyUpdate();
+    UpdateFrame(g_hWnd);
 
     if (Pos.x < 15)
     {
@@ -55,12 +57,6 @@ void Player::Update()
     }
 }
 
-void Player::LateUpdate()
-{
-}
-
-
-
 void Player::Render(HDC hdc)
 {
     HDC memDC;
@@ -68,40 +64,45 @@ void Player::Render(HDC hdc)
     //HDC memDC3 = BmpManager::GetInstance()->FindImage(L"Shadow");
     //GdiTransparentBlt(hdc, Info.Pos.x + 5, Info.Pos.y + 48, 40, 19, memDC3, 0, 0, 42, 19, RGB(255, 0, 255));
 
-    if (frameKey == L"Idle")
+    if (curState == L"Idle")
     {
         frame.Start = 0;
         frame.End = 2;
+        frame.Speed = 3.f;
         memDC = BmpManager::GetInstance()->FindImage(L"Idle");
         GdiTransparentBlt(hdc, Pos.x, Pos.y, 50, 60, memDC, frame.Start * 64, 0, 64, 76, RGB(255, 0, 255));
         //Rectangle(hdc, Info.Pos.x + 5, Info.Pos.y + 20, Info.Pos.x + 45, Info.Pos.y + 60);
     }
-    if (frameKey == L"Up")
+    if (curState == L"Up")
     {
         frame.Start = 0;
         frame.End = 7;
+        frame.Speed = 8.f;
         memDC = BmpManager::GetInstance()->FindImage(L"Up");
         GdiTransparentBlt(hdc, Pos.x, Pos.y, 50, 60, memDC, frame.Cur * 64, 0, 64, 76, RGB(255, 0, 255));
     }
-    if (frameKey == L"Right")
+    if (curState == L"Right")
     {
         frame.Start = 0;
         frame.End = 5;
+        frame.Speed = 6.f;
         memDC = BmpManager::GetInstance()->FindImage(L"Right");
         GdiTransparentBlt(hdc, Pos.x, Pos.y, 50, 60, memDC, frame.Cur * 64, 0, 64, 76, RGB(255, 0, 255));
 
     }
-    if (frameKey == L"Left")
+    if (curState == L"Left")
     {
         frame.Start = 0;
         frame.End = 5;
+        frame.Speed = 6.f;
         memDC = BmpManager::GetInstance()->FindImage(L"Left");
         GdiTransparentBlt(hdc, Pos.x, Pos.y, 50, 60, memDC, frame.Cur * 64, 0, 64, 76, RGB(255, 0, 255));
     }
-    if (frameKey == L"Down")
+    if (curState == L"Down")
     {
         frame.Start = 0;
         frame.End = 7;
+        frame.Speed = 8.f;
         memDC = BmpManager::GetInstance()->FindImage(L"Down");
         GdiTransparentBlt(hdc, Pos.x, Pos.y, 50, 60, memDC, frame.Cur * 64, 0, 64, 76, RGB(255, 0, 255));
     }
@@ -118,9 +119,9 @@ void Player::Release()
 
 void Player::CreateBalloon()
 {
-    WaterBalloon* balloon = new WaterBalloon();
+    GameObject* balloon = new WaterBalloon();
     balloon->SetPos((int)((Pos.x + 5) / 40) * 40 + 20, (int)((Pos.y + 19) / 40) * 40 + 40);
-
+    balloon->Init();
     ObjectManager::GetInstance()->AddObject(balloon, OBJTYPE::BALLOON);
 }
 
@@ -128,30 +129,30 @@ void Player::CreateBalloon()
 
 void Player::KeyUpdate()
 {
-    frameKey = L"Idle";
+    curState = L"Idle";
 
-    if (GetKeyState(VK_DOWN) & 0x8000)
+    if (KeyManager::GetInstance()->GetKeyState(KEY::DOWN) == KEYSTATE::HOLD)
     {
         Pos.y += Speed;
-        frameKey = L"Down";
+        curState = L"Down";
     }
-    else if (GetKeyState(VK_UP) & 0x8000)
+    else if (KeyManager::GetInstance()->GetKeyState(KEY::UP) == KEYSTATE::HOLD)
     {
         Pos.y -= Speed;
-        frameKey = L"Up";
+        curState = L"Up";
     }
-    else if (GetKeyState(VK_LEFT) & 0x8000)
+    else if (KeyManager::GetInstance()->GetKeyState(KEY::LEFT) == KEYSTATE::HOLD)
     {
         Pos.x -= Speed;
-        frameKey = L"Left";
+        curState = L"Left";
     }
-    else if (GetKeyState(VK_RIGHT) & 0x8000)
+    else if (KeyManager::GetInstance()->GetKeyState(KEY::RIGHT) == KEYSTATE::HOLD)
     {
         Pos.x += Speed;
-        frameKey = L"Right";
+        curState = L"Right";
     }
 
-    if (GetKeyState(VK_SPACE) & 0x8000)
+    if (KeyManager::GetInstance()->GetKeyState(KEY::SPACE) == KEYSTATE::TAP)
     {
         CreateBalloon();
     }

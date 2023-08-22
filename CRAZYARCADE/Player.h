@@ -5,8 +5,8 @@
 class Player :public GameObject
 {
 private:
-	float Speed; // ¼Óµµ
-	const TCHAR* frameKey;
+	float Speed;  
+	const TCHAR* curState;
 	void KeyUpdate();
 
 public:
@@ -15,10 +15,10 @@ public:
 
 	virtual void Init() override;
 	virtual void Update() override;
-	virtual void LateUpdate() override;
 	virtual void Render(HDC hdc) override;
 	virtual void Release() override;
 
 	void CreateBalloon();
+	enum state {IDLE, UP, RIGHT, LEFT, DOWN, BUBBLE, DEAD, ALIVE};
 };
 

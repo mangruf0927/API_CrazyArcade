@@ -5,7 +5,7 @@
 class WaterBalloon : public GameObject
 {
 private:
-	const TCHAR* frameKey; // 물풍선 상태 
+	const TCHAR* curState; // 물풍선 상태 
 	unsigned long BoomTime;
 
 public:
@@ -14,7 +14,6 @@ public:
 
 	virtual void Init() override;
 	virtual void Update() override;
-	virtual void LateUpdate() override;
 	virtual void Render(HDC hdc) override;
 	virtual void Release() override;
 

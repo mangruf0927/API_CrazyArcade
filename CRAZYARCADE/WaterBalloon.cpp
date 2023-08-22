@@ -23,41 +23,35 @@ void WaterBalloon::Init()
     BmpManager::GetInstance()->InsertBmp(L"Up1", L"Image/balloons/up1.bmp");
     BmpManager::GetInstance()->InsertBmp(L"Up2", L"Image/balloons/up2.bmp");
 
-    frameKey = L"Balloon";
+    curState = L"Balloon";
 
     frame.Cur = frame.Start;
+    frame.Speed = 200;
     frame.Timer = GetTickCount();
     BoomTime = GetTickCount();
 }
 
 void WaterBalloon::Update()
 {
-    if (GetTickCount() >= frame.Timer + 3000) // 1000 = 1ÃÊ
+    if (GetTickCount() >= frame.Timer + 500) // 1000 = 1ÃÊ
     {
-        frameKey = L"PopBalloon";
+        curState = L"PopBalloon";
     }
     UpdateFrame(g_hWnd);
 }
-
-void WaterBalloon::LateUpdate()
-{
-
-}
-
 
 void WaterBalloon::Render(HDC hdc)
 {
     HDC memDC1;
 
-    if (frameKey == L"Balloon") // 56 X 54
+    if (curState == L"Balloon") // 56 X 54
     {
         frame.Start = 0;
         frame.End = 3;
-
         HDC memDC = BmpManager::GetInstance()->FindImage(L"Balloon");
         GdiTransparentBlt(hdc, Pos.x, Pos.y, 40, 40, memDC, frame.Cur * 56, 0, 56, 54, RGB(255, 0, 255));
     }
-    if (frameKey == L"PopBalloon")
+    if (curState == L"PopBalloon")
     {
         {
             frame.Start = 0;

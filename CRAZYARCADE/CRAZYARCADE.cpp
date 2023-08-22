@@ -154,7 +154,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         if (mainGame)
         {
             mainGame->Update();
-            mainGame->LateUpdate();
         }
         InvalidateRect(hWnd, NULL, false);
         break;

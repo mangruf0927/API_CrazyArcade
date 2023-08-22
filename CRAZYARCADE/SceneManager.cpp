@@ -1,7 +1,7 @@
 #include "SceneManager.h"
+#include "define.h"
 #include "Stage1.h"
 
-SceneManager* SceneManager::Instance = nullptr;
 SceneManager::SceneManager()
 {
 }
@@ -37,11 +37,6 @@ void SceneManager::Update()
 	curScene->Update();
 }
 
-void SceneManager::LateUpdate()
-{
-	curScene->LateUpdate();
-}
-
 void SceneManager::Render(HDC hdc)
 {
 	curScene->Render(hdc);
@@ -49,21 +44,5 @@ void SceneManager::Render(HDC hdc)
 
 void SceneManager::Release()
 {
-	curScene->Release();
-}
-
-SceneManager* SceneManager::GetInstance()
-{
-	if (!Instance)
-		Instance = new SceneManager;
-	return Instance;
-}
-
-void SceneManager::DestroyInstance()
-{
-	if (Instance)
-	{
-		delete Instance;
-		Instance = nullptr;
-	}
+	SafeDelete(curScene);
 }

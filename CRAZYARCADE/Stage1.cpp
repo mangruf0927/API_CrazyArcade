@@ -17,17 +17,13 @@ void Stage1::Init()
 	BmpManager::GetInstance()->InsertBmp(L"Background", L"Image/map/Background.bmp");
 
 	GameObject* obj = new Player;
+	obj->Init();
 	ObjectManager::GetInstance()->AddObject(obj, OBJTYPE::PLAYER);
 }
 
 void Stage1::Update()
 {
 	ObjectManager::GetInstance()->Update();
-}
-
-void Stage1::LateUpdate()
-{
-	ObjectManager::GetInstance()->LateUpdate();
 }
 
 void Stage1::Render(HDC hdc)
