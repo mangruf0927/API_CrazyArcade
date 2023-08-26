@@ -1,7 +1,6 @@
 #include "Object.h"
 
 Object::Object()
-	:Pos{}
 {
 }
 

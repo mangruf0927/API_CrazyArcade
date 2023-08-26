@@ -32,7 +32,7 @@ void SceneManager::Init()
 
 
 	//ÇöÀç ¾À ÁöÁ¤
-	curScene = Scenes[(UINT)SCENETYPE::TOOL];
+	curScene = Scenes[(UINT)SCENETYPE::STAGE1];
 	curScene->Init();
 }
 

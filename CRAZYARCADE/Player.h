@@ -8,6 +8,7 @@ private:
 	float Speed;  
 	const TCHAR* curState;
 	void KeyUpdate();
+	DWORD dwTime;
 
 public:
 	Player();

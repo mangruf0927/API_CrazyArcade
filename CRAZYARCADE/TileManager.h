@@ -10,6 +10,7 @@ class TileManager
 private:
 	Tile* Map[13][15];
 	vector<Object*> Tiles;
+	TCHAR* FrameKey;
 	//vector<Tile*> Tiles;
 
 public :
@@ -21,8 +22,8 @@ public :
 	void Render(HDC hdc);
 	void Release();
 
-	void PickTile();
+	void PickTile(int tileName);
 	void SaveMap();
-	void LoadMap();
+	void LoadMap(TCHAR *filePath);
 };
 
