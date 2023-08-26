@@ -1,5 +1,6 @@
 #include "SceneManager.h"
 #include "define.h"
+#include "SceneTool.h"
 #include "Stage1.h"
 
 SceneManager::SceneManager()
@@ -26,9 +27,12 @@ void SceneManager::Init()
 	Scenes[(UINT)SCENETYPE::STAGE1] = new Stage1;
 	Scenes[(UINT)SCENETYPE::STAGE1]->SetName(L"STAGE1");
 
+	Scenes[(UINT)SCENETYPE::TOOL] = new SceneTool;
+	Scenes[(UINT)SCENETYPE::TOOL]->SetName(L"TOOL");
+
 
 	//ÇöÀç ¾À ÁöÁ¤
-	curScene = Scenes[(UINT)SCENETYPE::STAGE1];
+	curScene = Scenes[(UINT)SCENETYPE::TOOL];
 	curScene->Init();
 }
 
@@ -46,4 +50,9 @@ void SceneManager::Render(HDC hdc)
 void SceneManager::Release()
 {
 	SafeDelete(curScene);
+}
+
+void SceneManager::ChangeScene(SCENETYPE type)
+{
+	//curScene = Scenes[(UINT)type];
 }

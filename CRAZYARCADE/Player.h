@@ -11,7 +11,7 @@ private:
 
 public:
 	Player();
-	virtual ~Player();
+	~Player();
 
 	virtual void Init() override;
 	virtual void Update() override;
@@ -19,6 +19,6 @@ public:
 	virtual void Release() override;
 
 	void CreateBalloon();
-	enum state {IDLE, UP, RIGHT, LEFT, DOWN, BUBBLE, DEAD, ALIVE};
+	//enum state {IDLE, UP, RIGHT, LEFT, DOWN, BUBBLE, DEAD, ALIVE};
 };
 

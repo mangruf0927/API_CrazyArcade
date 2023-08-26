@@ -1,11 +1,14 @@
 #pragma once
 
-enum class OBJTYPE
+enum OBJTYPE
 {
-	DEFAULT, //0
-	BALLOON, //1
-	PLAYER, //2
-	MONSTER, //3
+	DEFAULT, 
+	TILE, 
+	BLOCK,
+	ITEM,
+	BALLOON, 
+	PLAYER, 
+	MONSTER, 
 	END
 };
 
@@ -16,5 +19,24 @@ enum class SCENETYPE
 	STAGE1,
 	STAGE2,
 	STAGE3,
+	TOOL,
+	END
+};
+
+enum class BLOCKTYPE
+{
+	NONE,
+	PUSHBOX,
+	BOX,
+	OBJECT,
+	END
+};
+
+enum class ITEM
+{
+	SKATE,
+	POTION,
+	MAXPOTION,
+	BALLOON,
 	END
 };

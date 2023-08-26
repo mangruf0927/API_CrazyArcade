@@ -5,7 +5,7 @@
 #include "KeyManager.h"
 
 Player::Player()
-    :Speed(5.0f)
+    :Speed(5.0f) 
 {
     //CreateCollider();
 }
@@ -31,7 +31,8 @@ void Player::Init()
 
     curState = L"Idle";
 
-    Pos = { 15, 20 };
+    //Pos = { 15, 20 };
+    Scale = { 50, 60 };
     frame.Cur = frame.Start;
     frame.Timer = GetTickCount();
 }
@@ -73,7 +74,7 @@ void Player::Render(HDC hdc)
         frame.End = 2;
         frame.Speed = 3.f;
         memDC = BmpManager::GetInstance()->FindImage(L"Idle");
-        GdiTransparentBlt(hdc, Pos.x, Pos.y, 50, 60, memDC, frame.Start * 64, 0, 64, 76, RGB(255, 0, 255));
+        GdiTransparentBlt(hdc, Pos.x, Pos.y, Scale.x, Scale.y, memDC, frame.Start * 64, 0, 64, 76, RGB(255, 0, 255));
         //Rectangle(hdc, Info.Pos.x + 5, Info.Pos.y + 20, Info.Pos.x + 45, Info.Pos.y + 60);
     }
     if (curState == L"Up")
@@ -82,7 +83,7 @@ void Player::Render(HDC hdc)
         frame.End = 7;
         frame.Speed = 8.f;
         memDC = BmpManager::GetInstance()->FindImage(L"Up");
-        GdiTransparentBlt(hdc, Pos.x, Pos.y, 50, 60, memDC, frame.Cur * 64, 0, 64, 76, RGB(255, 0, 255));
+        GdiTransparentBlt(hdc, Pos.x, Pos.y, Scale.x, Scale.y, memDC, frame.Cur * 64, 0, 64, 76, RGB(255, 0, 255));
     }
     if (curState == L"Right")
     {
@@ -90,7 +91,7 @@ void Player::Render(HDC hdc)
         frame.End = 5;
         frame.Speed = 6.f;
         memDC = BmpManager::GetInstance()->FindImage(L"Right");
-        GdiTransparentBlt(hdc, Pos.x, Pos.y, 50, 60, memDC, frame.Cur * 64, 0, 64, 76, RGB(255, 0, 255));
+        GdiTransparentBlt(hdc, Pos.x, Pos.y, Scale.x, Scale.y, memDC, frame.Cur * 64, 0, 64, 76, RGB(255, 0, 255));
 
     }
     if (curState == L"Left")
@@ -99,7 +100,7 @@ void Player::Render(HDC hdc)
         frame.End = 5;
         frame.Speed = 6.f;
         memDC = BmpManager::GetInstance()->FindImage(L"Left");
-        GdiTransparentBlt(hdc, Pos.x, Pos.y, 50, 60, memDC, frame.Cur * 64, 0, 64, 76, RGB(255, 0, 255));
+        GdiTransparentBlt(hdc, Pos.x, Pos.y, Scale.x, Scale.y, memDC, frame.Cur * 64, 0, 64, 76, RGB(255, 0, 255));
     }
     if (curState == L"Down")
     {
@@ -107,7 +108,7 @@ void Player::Render(HDC hdc)
         frame.End = 7;
         frame.Speed = 8.f;
         memDC = BmpManager::GetInstance()->FindImage(L"Down");
-        GdiTransparentBlt(hdc, Pos.x, Pos.y, 50, 60, memDC, frame.Cur * 64, 0, 64, 76, RGB(255, 0, 255));
+        GdiTransparentBlt(hdc, Pos.x, Pos.y, Scale.x, Scale.y, memDC, frame.Cur * 64, 0, 64, 76, RGB(255, 0, 255));
     }
 
     HDC memDC2 = BmpManager::GetInstance()->FindImage(L"Arrow");

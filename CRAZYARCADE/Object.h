@@ -1,6 +1,7 @@
 #pragma once
 #include "framework.h"
 #include "define.h"
+#include "ObjectManager.h"
 //#include "Collider.h"
 
 class Object
@@ -8,6 +9,7 @@ class Object
 protected:
 	FRAME frame;
 	_POINTFLOAT Pos;
+	POINT Scale; // Å©±â
 
 	//Collider* collider;
 

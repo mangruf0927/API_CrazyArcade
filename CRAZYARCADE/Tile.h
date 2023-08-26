@@ -1,14 +1,12 @@
 #pragma once
 #include "Object.h"
+#include "enum.h"
 
 class Tile : public Object
 {
-private :
-	bool isPass; // 통과 가능한가?
-	bool isBroken; // 부서지나?
-	bool isPush; // 밀리는가?
-
-	TCHAR* FrameKey;
+private:
+	TCHAR* tileKey;
+	BLOCKTYPE blockType;
 
 public :
 	Tile();
@@ -19,14 +17,10 @@ public :
 	virtual void Render(HDC hdc) override;
 	virtual void Release() override;
 
-	void SetIsPass(bool pass) { isPass = pass; }
-	void SetIsBroken(bool broken) { isBroken = broken; }
-	void SetIsPush(bool push) { isPush = push; }
+	void SetTileKey(TCHAR* key) { tileKey = key; }
+	TCHAR* GetTileKey() { return tileKey; }
 
-	bool GetIsPass() { return isPass; }
-	bool GetIsBroken() { return isBroken; }
-	bool GetIsPush() { return isPush; }
-
-	POINT GetTilePos();
+	void SetTile(BLOCKTYPE type) { blockType = type; }
+	BLOCKTYPE GetTile() { return blockType; }
 };
 

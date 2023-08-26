@@ -22,6 +22,7 @@ public:
 	void Render(HDC hdc);
 	void Release();
 
+	void ChangeScene(SCENETYPE type);
 	Scene* GetCurScene() { return curScene; }
 };
 

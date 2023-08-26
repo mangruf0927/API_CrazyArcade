@@ -8,7 +8,7 @@ class ObjectManager
 {
 	SINGLETONE(ObjectManager)
 private:
-	vector<Object*> objects[(UINT)OBJTYPE::END];
+	vector<Object*> objects[OBJTYPE::END];
 
 public:
 	ObjectManager();
