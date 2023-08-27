@@ -31,7 +31,7 @@ void TileManager::Init()
 
 void TileManager::Update()
 {
-	for (auto& tile : Tiles)
+	for (auto& tile : Tiles)   
 		tile->Update();
 }
 
@@ -53,7 +53,17 @@ void TileManager::Release()
 
 void TileManager::PickTile(int tileName)
 {
+	POINT ptMouse = {};
+	GetCursorPos(&ptMouse);
+	ScreenToClient(g_hWnd, &ptMouse);
 
+	int x = (ptMouse.x - 20) / 40;
+	int y = (ptMouse.y - 40) / 40;
+	int idx = 15 * y + x;
+
+	if (0 > idx || Tiles.size() <= (size_t)idx) return;
+
+	dynamic_cast<Tile*>(Tiles[idx])->SetTileKey(tileName);
 }
 
 void TileManager::SaveMap()
@@ -70,12 +80,48 @@ void TileManager::SaveMap()
 
 	for (auto& tile : Tiles)
 	{
+		int drawID = dynamic_cast<Tile*>(tile)->GetDrawID();
+
 		WriteFile(file, &tile->GetInfo(), sizeof(OBJINFO), &dwByte, NULL);
-		WriteFile(file, &dynamic_cast<Tile*>(tile)->GetTileKey());
+		WriteFile(file, &drawID, sizeof(int), &dwByte, 0);
 	}
+
+	CloseHandle(file);
+	MessageBox(g_hWnd, L"저장 성공", L"success", MB_OK);
 }
-                                                                              
+              
+
+
 void TileManager::LoadMap(TCHAR* filePath)
 {
+	HANDLE file = CreateFile(L"Data/map.dat", GENERIC_READ, 0, 0, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+	
+	if (INVALID_HANDLE_VALUE == file)
+	{
+		MessageBox(g_hWnd, L"불러오기 실패", L"error", MB_OK);
+		return;
+	}
 
+	Release();
+
+	OBJINFO tempinfo = {};
+	int drawID = 0;
+	DWORD dwByte = 0;
+
+	while (1)
+	{
+		ReadFile(file, &tempinfo, sizeof(OBJINFO), &dwByte, NULL);
+		ReadFile(file, &drawID, sizeof(int), &dwByte, NULL);
+
+		if (dwByte == 0) break;
+
+		Object* tile = new Tile;
+		tile->Init();
+		tile->SetPos(tempinfo.posX, tempinfo.posY);
+
+		dynamic_cast<Tile*>(tile)->SetDrawID(drawID);
+		Tiles.push_back(tile);
+	}
+
+	CloseHandle(file);
 }

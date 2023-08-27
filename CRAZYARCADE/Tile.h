@@ -5,7 +5,7 @@
 class Tile : public Object
 {
 private:
-	TCHAR* tileKey;
+	int tileKey;
 	BLOCKTYPE blockType;
 	int drawID;
 
@@ -22,8 +22,8 @@ public :
 	virtual void Render(HDC hdc) override;
 	virtual void Release() override;
 
-	void SetTileKey(TCHAR* key) { tileKey = key; }
-	TCHAR* GetTileKey() { return tileKey; }
+	void SetTileKey(int key) { tileKey = key; }
+	const int& GetTileKey() { return tileKey; }
 
 	void SetTile(BLOCKTYPE type) { blockType = type; }
 	BLOCKTYPE GetTile() { return blockType; }
