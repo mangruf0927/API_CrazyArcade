@@ -55,7 +55,7 @@ void TileManager::PickTile()
 
 void TileManager::SaveMap()
 {
-	// HANDLE Maap = CreateFile("MapData/map.dat", GENERIC_WRITE, 0, CREATE_ALWAYS, NULL, )
+	//HANDLE Maap = CreateFile("MapData/map.dat", GENERIC_WRITE, 0, CREATE_ALWAYS, NULL, )
 }
                                                                               
 void TileManager::LoadMap()
