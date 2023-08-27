@@ -5,13 +5,13 @@
 class Tile : public Object
 {
 private:
-	int tileKey;
-	BLOCKTYPE blockType;
-	int drawID;
+	//const TCHAR* tileKey;
+	int drawKey;
+	//BLOCKTYPE blockType;
 
-	bool isPass;
+	/*bool isPass;
 	bool isPush;
-	bool isBoom;
+	bool isBroken;*/
 
 public :
 	Tile();
@@ -22,13 +22,16 @@ public :
 	virtual void Render(HDC hdc) override;
 	virtual void Release() override;
 
-	void SetTileKey(int key) { tileKey = key; }
-	const int& GetTileKey() { return tileKey; }
+	//void SetTileKey(TCHAR* skey) { tileKey = skey; }
+	//const TCHAR* GetTileKey() { return tileKey; }
 
-	void SetTile(BLOCKTYPE type) { blockType = type; }
-	BLOCKTYPE GetTile() { return blockType; }
+	//void SetTile(BLOCKTYPE type) { blockType = type; }
+	//BLOCKTYPE GetTile() { return blockType; }
 
-	void SetDrawID(int ID) { drawID = ID; }
-	int GetDrawID() { return drawID; }
+	void SetDrawKey(int dkey) { drawKey = dkey; }
+	int GetDrawKey() { return drawKey; }
+
+	void updateRect();
+	//void SetTileType();
 };
 

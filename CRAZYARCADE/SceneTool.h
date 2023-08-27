@@ -14,5 +14,8 @@ public :
 	virtual void LateUpdate();
 	virtual void Render(HDC hdc);
 	virtual void Release(); 
+
+	void KeyUpdate();
+	void RenderLine(HDC hdc);
 };
 

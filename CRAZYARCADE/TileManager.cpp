@@ -51,10 +51,11 @@ void TileManager::Release()
 }
 
 
-void TileManager::PickTile(int tileName)
+void TileManager::PickTile(int drawKey)
 {
 	LPARAM lParam;
 	POINT ptMouse = {};
+<<<<<<< HEAD
 
 	ptMouse.x = LOWORD(lParam);
 	ptMouse.y = HIWORD(lParam);
@@ -62,62 +63,73 @@ void TileManager::PickTile(int tileName)
 
 	/*GetCursorPos(&ptMouse);
 	ScreenToClient(g_hWnd, &ptMouse);*/
+=======
+	//ptMouse.x = LOWORD(lParam);
+	//ptMouse.y = HIWORD(lParam);
+
+	GetCursorPos(&ptMouse);
+	ScreenToClient(g_hWnd, &ptMouse);
+>>>>>>> e9ed67252e7e15c4cd9e0a4c6e888e6d7e13e046
 
 	int x = (ptMouse.x - 20) / 40;
 	int y = (ptMouse.y - 40) / 40;
 	int idx = 15 * y + x;
 
+	cout << ptMouse.x << ", " << ptMouse.y << endl;
+	cout << x << ", " << y << endl << endl;
+
 	if (0 > idx || Tiles.size() <= (size_t)idx) return;
 
-	dynamic_cast<Tile*>(Tiles[idx])->SetTileKey(tileName);
+	dynamic_cast<Tile*>(Tiles[idx])->SetDrawKey(drawKey);
 }
 
 void TileManager::SaveMap()
 {
-	HANDLE file = CreateFile(L"Data/map.dat", GENERIC_WRITE, 0, 0, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
+	HANDLE file = CreateFile(L"Data/stage1.dat", GENERIC_WRITE, 0, 0, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
 
 	if (INVALID_HANDLE_VALUE == file)
 	{
-		MessageBox(g_hWnd, L"저장 실패", L"error", MB_OK);
-		return;
+		cout << "저장 실패" << endl;
 	}
 
 	DWORD dwByte = 0;
 
 	for (auto& tile : Tiles)
 	{
-		int drawID = dynamic_cast<Tile*>(tile)->GetDrawID();
+		int drawID = dynamic_cast<Tile*>(tile)->GetDrawKey();
 
 		WriteFile(file, &tile->GetInfo(), sizeof(OBJINFO), &dwByte, NULL);
 		WriteFile(file, &drawID, sizeof(int), &dwByte, 0);
 	}
 
 	CloseHandle(file);
-	MessageBox(g_hWnd, L"저장 성공", L"success", MB_OK);
+	cout << "저장 성공" << endl;
 }
               
 
 
-void TileManager::LoadMap(TCHAR* filePath)
+void TileManager::LoadMap(const TCHAR* filePath)
 {
-	HANDLE file = CreateFile(L"Data/map.dat", GENERIC_READ, 0, 0, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+	Release();
+
+	HANDLE file = CreateFile(filePath, GENERIC_READ, 0, 0, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
 	
 	if (INVALID_HANDLE_VALUE == file)
 	{
-		MessageBox(g_hWnd, L"불러오기 실패", L"error", MB_OK);
+		MessageBox(g_hWnd, L"불러오기 실패", L"실패", MB_OK);
 		return;
+		cout << "불러오기 실패" << endl;
 	}
 
-	Release();
 
+	int drawKey = 0;
 	OBJINFO tempinfo = {};
-	int drawID = 0;
 	DWORD dwByte = 0;
 
 	while (1)
 	{
 		ReadFile(file, &tempinfo, sizeof(OBJINFO), &dwByte, NULL);
-		ReadFile(file, &drawID, sizeof(int), &dwByte, NULL);
+		ReadFile(file, &drawKey, sizeof(int), &dwByte, NULL);
 
 		if (dwByte == 0) break;
 
@@ -125,8 +137,8 @@ void TileManager::LoadMap(TCHAR* filePath)
 		tile->Init();
 		tile->SetPos(tempinfo.posX, tempinfo.posY);
 
-		dynamic_cast<Tile*>(tile)->SetDrawID(drawID);
-		Tiles.push_back(tile);
+		dynamic_cast<Tile*>(tile)->SetDrawKey(drawKey);
+		Tiles.emplace_back(tile);
 	}
 
 	CloseHandle(file);
