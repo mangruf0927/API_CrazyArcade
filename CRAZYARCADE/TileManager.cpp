@@ -53,9 +53,15 @@ void TileManager::Release()
 
 void TileManager::PickTile(int tileName)
 {
+	LPARAM lParam;
 	POINT ptMouse = {};
-	GetCursorPos(&ptMouse);
-	ScreenToClient(g_hWnd, &ptMouse);
+
+	ptMouse.x = LOWORD(lParam);
+	ptMouse.y = HIWORD(lParam);
+
+
+	/*GetCursorPos(&ptMouse);
+	ScreenToClient(g_hWnd, &ptMouse);*/
 
 	int x = (ptMouse.x - 20) / 40;
 	int y = (ptMouse.y - 40) / 40;
