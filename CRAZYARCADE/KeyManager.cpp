@@ -1,6 +1,6 @@
 #include "KeyManager.h"
 
-int arrVK[(int)KEY::LAST] = { VK_UP, VK_DOWN, VK_LEFT, VK_RIGHT, VK_SPACE, VK_RETURN, VK_ESCAPE };
+int arrVK[(int)KEY::LAST] = { VK_UP, VK_DOWN, VK_LEFT, VK_RIGHT, VK_SPACE, VK_RETURN, VK_ESCAPE, VK_LBUTTON };
 
 
 void KeyManager::Init()

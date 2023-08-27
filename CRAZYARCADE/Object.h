@@ -23,9 +23,15 @@ public:
 	virtual void Release() = 0; 
 
 	void UpdateFrame(HWND hWnd);
+	
+	const OBJINFO& GetInfo() { return info; }
+	
 	void SetPos(float x, float y) { info.posX = x, info.posY = y; }
 	float GetPos() { return info.posX, info.posY; }
-	const OBJINFO& GetInfo() { return info; }
+	
+	void SetSize(float x, float y) { info.sizeX = x, info.sizeY = y; }
+	float GetSize() { return info.sizeX, info.sizeY; }
+
 	//void CreateCollider();
 
 };

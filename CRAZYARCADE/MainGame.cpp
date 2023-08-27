@@ -2,6 +2,7 @@
 #include "BmpManager.h"
 #include "SceneManager.h"
 #include "KeyManager.h"
+#include "TileManager.h"
 
 MainGame::MainGame()
 {
@@ -15,6 +16,7 @@ void MainGame::Init()
 {
 	KeyManager::GetInstance()->Init();
 	SceneManager::GetInstance()->Init();
+	TileManager::GetInstance()->Init();
 }
 
 void MainGame::Update()

@@ -8,7 +8,6 @@ class TileManager
 {
 	SINGLETONE(TileManager);
 private:
-	Tile* Map[13][15];
 	vector<Object*> Tiles;
 	TCHAR* FrameKey;
 	//vector<Tile*> Tiles;
@@ -24,6 +23,6 @@ public :
 
 	void PickTile(int tileName);
 	void SaveMap();
-	void LoadMap(TCHAR *filePath);
+	void LoadMap(const TCHAR *filePath);
 };
 

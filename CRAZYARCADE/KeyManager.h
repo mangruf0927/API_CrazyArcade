@@ -19,6 +19,7 @@ enum class KEY
 	SPACE,
 	ENTER,
 	ESC,
+	LMOUSE,
 	LAST
 };
 
