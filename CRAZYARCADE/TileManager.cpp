@@ -24,7 +24,7 @@ void TileManager::Init()
 			tile->SetPos(x, y);
 			ObjectManager::GetInstance()->AddObject(tile, TILE);
 			
-			Tiles.push_back(tile);
+			Tiles.emplace_back(tile);
 		}
 	}
 }
@@ -44,21 +44,38 @@ void TileManager::Render(HDC hdc)
 void TileManager::Release()
 {
 	for (auto& tile : Tiles)
+	{
+		if (tile) delete tile;
+	}
 		Tiles.clear();
 }
 
 
-void TileManager::PickTile()
+void TileManager::PickTile(int tileName)
 {
 
 }
 
 void TileManager::SaveMap()
 {
-	//HANDLE Maap = CreateFile("MapData/map.dat", GENERIC_WRITE, 0, CREATE_ALWAYS, NULL, )
+	HANDLE file = CreateFile(L"Data/map.dat", GENERIC_WRITE, 0, 0, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
+
+	if (INVALID_HANDLE_VALUE == file)
+	{
+		MessageBox(g_hWnd, L"저장 실패", L"error", MB_OK);
+		return;
+	}
+
+	DWORD dwByte = 0;
+
+	for (auto& tile : Tiles)
+	{
+		WriteFile(file, &tile->GetInfo(), sizeof(OBJINFO), &dwByte, NULL);
+		WriteFile(file, &dynamic_cast<Tile*>(tile)->GetTileKey());
+	}
 }
                                                                               
-void TileManager::LoadMap()
+void TileManager::LoadMap(TCHAR* filePath)
 {
 
 }

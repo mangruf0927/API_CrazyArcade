@@ -8,8 +8,7 @@ class Object
 {
 protected:
 	FRAME frame;
-	_POINTFLOAT Pos;
-	POINT Scale; // Å©±â
+	OBJINFO info;
 
 	//Collider* collider;
 
@@ -24,10 +23,9 @@ public:
 	virtual void Release() = 0; 
 
 	void UpdateFrame(HWND hWnd);
-	void SetPos(_POINTFLOAT objPos) { objPos = Pos; }
-	void SetPos(int x, int y) { Pos.x = x, Pos.y = y; }
-	_POINTFLOAT GetPos() { return Pos; }
-
+	void SetPos(float x, float y) { info.posX = x, info.posY = y; }
+	float GetPos() { return info.posX, info.posY; }
+	const OBJINFO& GetInfo() { return info; }
 	//void CreateCollider();
 
 };

@@ -7,6 +7,11 @@ class Tile : public Object
 private:
 	TCHAR* tileKey;
 	BLOCKTYPE blockType;
+	int drawID;
+
+	bool isPass;
+	bool isPush;
+	bool isBoom;
 
 public :
 	Tile();
@@ -22,5 +27,8 @@ public :
 
 	void SetTile(BLOCKTYPE type) { blockType = type; }
 	BLOCKTYPE GetTile() { return blockType; }
+
+	void SetDrawID(int ID) { drawID = ID; }
+	int GetDrawID() { return drawID; }
 };
 

@@ -51,7 +51,7 @@ void WaterBalloon::Render(HDC hdc)
         frame.End = 3;
         frame.Speed = 100.f;
         HDC memDC = BmpManager::GetInstance()->FindImage(L"Bomb");
-        GdiTransparentBlt(hdc, Pos.x, Pos.y, 40, 40, memDC, frame.Cur * 56, 0, 56, 54, RGB(255, 0, 255));
+        GdiTransparentBlt(hdc, info.posX, info.posY, 40, 40, memDC, frame.Cur * 56, 0, 56, 54, RGB(255, 0, 255));
     }
     if (curState == L"Pop")
     {
@@ -60,7 +60,7 @@ void WaterBalloon::Render(HDC hdc)
             frame.End = 5;
             frame.Speed = 50.f;
             memDC1 = BmpManager::GetInstance()->FindImage(L"Center"); // 52 X 52
-            GdiTransparentBlt(hdc, Pos.x, Pos.y, 40, 40, memDC1, frame.Cur * 52, 0, 52, 52, RGB(255, 0, 255));
+            GdiTransparentBlt(hdc, info.posX, info.posY, 40, 40, memDC1, frame.Cur * 52, 0, 52, 52, RGB(255, 0, 255));
         }
 
         {
@@ -69,16 +69,16 @@ void WaterBalloon::Render(HDC hdc)
             frame.Speed = 100.f;
 
             memDC1 = BmpManager::GetInstance()->FindImage(L"Down1");
-            GdiTransparentBlt(hdc, Pos.x, Pos.y + 40, 40, 40, memDC1, frame.Cur * 52, 0, 52, 52, RGB(255, 0, 255));
+            GdiTransparentBlt(hdc, info.posX, info.posY + 40, 40, 40, memDC1, frame.Cur * 52, 0, 52, 52, RGB(255, 0, 255));
 
             memDC1 = BmpManager::GetInstance()->FindImage(L"Left1");
-            GdiTransparentBlt(hdc, Pos.x - 40, Pos.y, 40, 40, memDC1, frame.Cur * 52, 0, 52, 52, RGB(255, 0, 255));
+            GdiTransparentBlt(hdc, info.posX - 40, info.posY, 40, 40, memDC1, frame.Cur * 52, 0, 52, 52, RGB(255, 0, 255));
 
             memDC1 = BmpManager::GetInstance()->FindImage(L"Right1");
-            GdiTransparentBlt(hdc, Pos.x + 40, Pos.y, 40, 40, memDC1, frame.Cur * 52, 0, 52, 52, RGB(255, 0, 255));
+            GdiTransparentBlt(hdc, info.posX + 40, info.posY, 40, 40, memDC1, frame.Cur * 52, 0, 52, 52, RGB(255, 0, 255));
 
             memDC1 = BmpManager::GetInstance()->FindImage(L"Up1");
-            GdiTransparentBlt(hdc, Pos.x, Pos.y - 40, 40, 40, memDC1, frame.Cur * 52, 0, 52, 52, RGB(255, 0, 255));
+            GdiTransparentBlt(hdc, info.posX, info.posY - 40, 40, 40, memDC1, frame.Cur * 52, 0, 52, 52, RGB(255, 0, 255));
         }
     }
 

@@ -12,6 +12,15 @@ struct FRAME
 	unsigned long Timer;
 };
 
+struct OBJINFO
+{
+	float posX;
+	float posY;
+
+	float sizeX;
+	float sizeY;
+};
+
 template<typename T>
 void SafeDelete(T& obj) {
 	if (obj)

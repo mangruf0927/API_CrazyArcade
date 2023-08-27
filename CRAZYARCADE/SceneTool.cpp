@@ -1,5 +1,6 @@
 #include "SceneTool.h"
 #include "Tile.h"
+#include "BmpManager.h"
 
 SceneTool::SceneTool()
 {
@@ -11,17 +12,16 @@ SceneTool::~SceneTool()
 
 void SceneTool::Init()
 {
-	//타일 생성
-	for (int i = 0; i < 15; ++i)
-	{
-		for (int j = 0; j < 13; ++j)
-		{
-			Tile* tile = new Tile;
-			tile->Init();
-			tile->SetPos(20 + i * 40, 40 + 40 * j);
-			ObjectManager::GetInstance()->AddObject(tile, OBJTYPE::TILE);
-		}
-	}
+	// 배경
+	BmpManager::GetInstance()->InsertBmp(L"background", L"image/stage/Background.bmp");
+	
+	// 타일
+	BmpManager::GetInstance()->InsertBmp(L"background", L"image/stage/Background.bmp");
+	
+	// 블록
+	BmpManager::GetInstance()->InsertBmp(L"background", L"image/stage/Background.bmp");
+	BmpManager::GetInstance()->InsertBmp(L"background", L"image/stage/Background.bmp");
+
 }
 
 void SceneTool::Update()
