@@ -25,6 +25,11 @@ void MainGame::Update()
 	SceneManager::GetInstance()->Update();
 }
 
+void MainGame::LateUpdate()
+{
+	SceneManager::GetInstance()->LateUpdate();
+}
+
 void MainGame::Render(HDC hdc)
 {
 	SceneManager::GetInstance()->Render(hdc);

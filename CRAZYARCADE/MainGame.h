@@ -13,6 +13,7 @@ public:
 
 	void Init();
 	void Update();
+	void LateUpdate();
 	void Render(HDC hdc);
 	void Release();
 };

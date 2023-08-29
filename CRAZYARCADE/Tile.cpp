@@ -14,7 +14,12 @@ void Tile::Init()
 
 }
 
-void Tile::Update()
+int Tile::Update()
+{
+	return LIVE;
+}
+
+void Tile::LateUpdate()
 {
 }
 

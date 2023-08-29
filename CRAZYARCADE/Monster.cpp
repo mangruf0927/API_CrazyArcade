@@ -9,7 +9,12 @@ void Monster::Init()
 	BmpManager::GetInstance()->InsertBmp(L"moster1_UP", L"Image/Monster/moster1_UP");
 }
 
-void Monster::Update()
+int Monster::Update()
+{
+	return LIVE;
+}
+
+void Monster::LateUpdate()
 {
 }
 

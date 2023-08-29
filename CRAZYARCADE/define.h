@@ -1,6 +1,9 @@
 #pragma once
 
 #define SINGLETONE(type) public : static type* GetInstance() { static type mgr; return &mgr; }
+#define LIVE 0
+#define DEAD 1
+
 
 struct FRAME
 {

@@ -129,14 +129,11 @@
   <ItemGroup>
     <ClInclude Include="Bmp.h" />
     <ClInclude Include="BmpManager.h" />
-    <ClInclude Include="Block.h" />
-    <ClInclude Include="BoxObject.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="CRAZYARCADE.h" />
     <ClInclude Include="define.h" />
     <ClInclude Include="enum.h" />
     <ClInclude Include="framework.h" />
-    <ClInclude Include="SceneTool.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="KeyManager.h" />
@@ -157,14 +154,11 @@
   <ItemGroup>
     <ClCompile Include="Bmp.cpp" />
     <ClCompile Include="BmpManager.cpp" />
-    <ClCompile Include="Block.cpp" />
-    <ClCompile Include="BoxObject.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="CRAZYARCADE.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="SceneTool.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="KeyManager.cpp" />

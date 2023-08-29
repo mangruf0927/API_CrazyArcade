@@ -27,7 +27,7 @@ void Stage1::Init()
 	BmpManager::GetInstance()->InsertBmp(L"Obj3", L"Image/stage/Obj3.bmp");
 	BmpManager::GetInstance()->InsertBmp(L"Obj4", L"Image/stage/Obj4.bmp");
 	
-	TileManager::GetInstance()->LoadMap(L"Data/stage1.dat");
+	//TileManager::GetInstance()->LoadMap(L"Data/stage1.dat");
 
 	// 플레이어
 	{
@@ -61,14 +61,7 @@ void Stage1::Render(HDC hdc)
 	GdiTransparentBlt(hdc, 661, 104, 42, 33, memDC, 0, 0, 91, 73, RGB(255, 0, 255));
 
 
-	TileManager::GetInstance()->Render(hdc);
-	/*for (int i = 0; i < 15; i++)
-	{
-		for (int j = 0; j < 13; j++)
-		{
-			Rectangle(hdc, 20 + i * 40, 40 + j * 40, 60 + i * 40, 80 + j * 40);
-		}
-	}*/
+	//TileManager::GetInstance()->Render(hdc);
 
 	ObjectManager::GetInstance()->Render(hdc);
 }

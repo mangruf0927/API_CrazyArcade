@@ -5,15 +5,14 @@ class Object;
 class Collider
 {
 private :
-	Object* owner; // collider를 소유하고 있는 오브젝트
-	POINT offsetPos; //오브젝트로부터 상대적인 위치
-	POINT finalPos; //최종 위치
 
 public:
-	friend class Object;
-
 	Collider();
 	~Collider();
-	void LateUpdate();
+
+
+	static bool CheckRect(Object* obj1, Object* obj2, float* x, float* y);
+	static void CollisionRect(Object* player, vector<Object*> vecBlock);
+
 };
 

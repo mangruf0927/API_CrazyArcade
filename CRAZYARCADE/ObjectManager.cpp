@@ -14,24 +14,21 @@ void ObjectManager::AddObject(Object* obj, OBJTYPE type)
 	objects[type].emplace_back(obj);
 }
 
-//void ObjectManager::PickBlock(Object* obj, BLOCKTYPE blockType)
-//{
-//}
-//
-//void ObjectManager::SaveBlock()
-//{
-//}
-//
-//void ObjectManager::LoadBlock()
-//{
-//}
-
 void ObjectManager::Update()
 {
-	for (int i = 0; i < OBJTYPE::END; ++i)
+	for (int i = 0; i < (UINT)OBJTYPE::END; ++i)
 	{
-		for (auto& Obj : objects[i])
-			Obj->Update();
+		for (auto iter = objects[i].begin(); iter != objects[i].end();)
+		{
+			int iEvent = (*iter)->Update();
+			if (iEvent == DEAD)
+			{
+				SafeDelete(*iter);
+				iter = objects[i].erase(iter);
+			}
+			else
+				++iter;
+		}
 	}
 }
 

@@ -31,7 +31,7 @@ void WaterBalloon::Init()
     BoomTime = GetTickCount();
 }
 
-void WaterBalloon::Update()
+int WaterBalloon::Update()
 {
     if (GetTickCount() >= BoomTime + 3000) // 1000 = 1ÃÊ
     {
@@ -39,8 +39,15 @@ void WaterBalloon::Update()
     }
     UpdateFrame(g_hWnd);
 
+    if (GetTickCount() >= BoomTime + 4000)
+    {
+        return DEAD;
+    }
 
+}
 
+void WaterBalloon::LateUpdate()
+{
 }
 
 

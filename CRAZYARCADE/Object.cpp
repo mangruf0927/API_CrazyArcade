@@ -6,16 +6,11 @@ Object::Object()
 
 Object::~Object()
 {
-	/*if (nullptr != collider)
-	{
-		delete collider;
-	}*/
 }
 
 void Object::LateUpdate()
 {
-	/*if (collider)
-		collider->LateUpdate();*/
+
 }
 
 void Object::UpdateFrame(HWND hWnd)
@@ -33,8 +28,3 @@ void Object::UpdateFrame(HWND hWnd)
 	}
 }
 
-//void Object::CreateCollider()
-//{
-//	collider = new Collider;
-//	collider->owner = this;
-//}

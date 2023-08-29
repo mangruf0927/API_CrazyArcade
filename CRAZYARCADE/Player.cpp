@@ -39,7 +39,7 @@ void Player::Init()
 }
 
 
-void Player::Update()
+int Player::Update()
 {
     KeyUpdate();
     UpdateFrame(g_hWnd);
@@ -59,9 +59,13 @@ void Player::Update()
         {
             dwTime = GetTickCount();
             //CSceneManager::Get_Instance()->Scene_Change(CSceneManager::SCENE_MENU);
+            return DEAD;
         }
     }
+}
 
+void Player::LateUpdate()
+{
     if (info.posX < 15)
     {
         info.posX += Speed;
