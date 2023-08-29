@@ -14,8 +14,8 @@ Object::~Object()
 
 void Object::LateUpdate()
 {
-	//if (collider)
-	//	collider->LateUpdate();
+	/*if (collider)
+		collider->LateUpdate();*/
 }
 
 void Object::UpdateFrame(HWND hWnd)

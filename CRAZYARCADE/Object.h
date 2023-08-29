@@ -2,15 +2,12 @@
 #include "framework.h"
 #include "define.h"
 #include "ObjectManager.h"
-//#include "Collider.h"
 
 class Object
 {
 protected:
 	FRAME frame;
 	OBJINFO info;
-
-	//Collider* collider;
 
 public:
 	Object();
@@ -31,8 +28,6 @@ public:
 	
 	void SetSize(float x, float y) { info.sizeX = x, info.sizeY = y; }
 	float GetSize() { return info.sizeX, info.sizeY; }
-
-	//void CreateCollider();
 
 };
 

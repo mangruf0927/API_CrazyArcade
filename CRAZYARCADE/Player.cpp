@@ -7,7 +7,6 @@
 Player::Player()
     :Speed(5.0f) 
 {
-    //CreateCollider();
 }
 
 Player::~Player()

@@ -10,7 +10,6 @@ class TileManager
 private:
 	vector<Object*> Tiles;
 	TCHAR* FrameKey;
-	//vector<Tile*> Tiles;
 
 public :
 	TileManager();

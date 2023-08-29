@@ -14,6 +14,18 @@ void ObjectManager::AddObject(Object* obj, OBJTYPE type)
 	objects[type].emplace_back(obj);
 }
 
+//void ObjectManager::PickBlock(Object* obj, BLOCKTYPE blockType)
+//{
+//}
+//
+//void ObjectManager::SaveBlock()
+//{
+//}
+//
+//void ObjectManager::LoadBlock()
+//{
+//}
+
 void ObjectManager::Update()
 {
 	for (int i = 0; i < OBJTYPE::END; ++i)

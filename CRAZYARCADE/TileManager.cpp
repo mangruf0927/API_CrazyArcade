@@ -53,23 +53,15 @@ void TileManager::Release()
 
 void TileManager::PickTile(int drawKey)
 {
-	LPARAM lParam;
+	//LPARAM lParam;
 	POINT ptMouse = {};
-<<<<<<< HEAD
 
-	ptMouse.x = LOWORD(lParam);
-	ptMouse.y = HIWORD(lParam);
-
-
-	/*GetCursorPos(&ptMouse);
-	ScreenToClient(g_hWnd, &ptMouse);*/
-=======
 	//ptMouse.x = LOWORD(lParam);
 	//ptMouse.y = HIWORD(lParam);
 
 	GetCursorPos(&ptMouse);
 	ScreenToClient(g_hWnd, &ptMouse);
->>>>>>> e9ed67252e7e15c4cd9e0a4c6e888e6d7e13e046
+
 
 	int x = (ptMouse.x - 20) / 40;
 	int y = (ptMouse.y - 40) / 40;
@@ -85,7 +77,7 @@ void TileManager::PickTile(int drawKey)
 
 void TileManager::SaveMap()
 {
-	HANDLE file = CreateFile(L"Data/stage1.dat", GENERIC_WRITE, 0, 0, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
+	HANDLE file = CreateFile(L"Data/stage2.dat", GENERIC_WRITE, 0, 0, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
 
 	if (INVALID_HANDLE_VALUE == file)
 	{
@@ -103,7 +95,6 @@ void TileManager::SaveMap()
 	}
 
 	CloseHandle(file);
-	cout << "저장 성공" << endl;
 }
               
 
@@ -116,8 +107,8 @@ void TileManager::LoadMap(const TCHAR* filePath)
 	
 	if (INVALID_HANDLE_VALUE == file)
 	{
-		MessageBox(g_hWnd, L"불러오기 실패", L"실패", MB_OK);
-		return;
+		//MessageBox(g_hWnd, L"불러오기 실패", L"실패", MB_OK);
+		//return;
 		cout << "불러오기 실패" << endl;
 	}
 

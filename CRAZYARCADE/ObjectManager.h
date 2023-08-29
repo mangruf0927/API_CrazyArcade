@@ -20,4 +20,8 @@ public:
 	void Release();
 	
 	void AddObject(Object* obj, OBJTYPE type);
+
+	/*void PickBlock(Object* obj, BLOCKTYPE blockType);
+	void SaveBlock();
+	void LoadBlock();*/
 };

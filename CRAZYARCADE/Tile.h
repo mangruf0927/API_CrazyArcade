@@ -30,8 +30,6 @@ public :
 
 	void SetDrawKey(int dkey) { drawKey = dkey; }
 	int GetDrawKey() { return drawKey; }
-
-	void updateRect();
 	//void SetTileType();
 };
 

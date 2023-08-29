@@ -38,6 +38,9 @@ void WaterBalloon::Update()
         curState = L"Pop";
     }
     UpdateFrame(g_hWnd);
+
+
+
 }
 
 

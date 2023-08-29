@@ -25,6 +25,8 @@ void SceneTool::Init()
 	BmpManager::GetInstance()->InsertBmp(L"Obj2", L"Image/stage/Obj2.bmp");
 	BmpManager::GetInstance()->InsertBmp(L"Obj3", L"Image/stage/Obj3.bmp");
 	BmpManager::GetInstance()->InsertBmp(L"Obj4", L"Image/stage/Obj4.bmp");
+	
+	
 	TileManager::GetInstance()->Init();
 }
 

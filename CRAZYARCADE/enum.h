@@ -26,9 +26,9 @@ enum class SCENETYPE
 enum class BLOCKTYPE
 {
 	NONE,
-	PUSHBOX,
-	BOX,
-	OBJECT,
+	PUSHBLOCK, // 밀리고 부숴지는 블럭
+	BLOCK, // 부숴지는 블럭
+	OBJECT, // 밀리지도 않고 부숴지지도 않는 블럭
 	END
 };
 

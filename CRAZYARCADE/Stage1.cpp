@@ -19,8 +19,6 @@ void Stage1::Init()
 	BmpManager::GetInstance()->InsertBmp(L"Background", L"Image/stage1/Background.bmp");
 	BmpManager::GetInstance()->InsertBmp(L"Bazzi_", L"Image/UI/IngameBazzi.bmp");
 
-	BmpManager::GetInstance()->InsertBmp(L"Tile1", L"Image/stage/Tile.bmp");
-
 	BmpManager::GetInstance()->InsertBmp(L"Box1", L"Image/stage/Box1.bmp");
 	BmpManager::GetInstance()->InsertBmp(L"Box2", L"Image/stage/Box2.bmp");
 
@@ -35,7 +33,7 @@ void Stage1::Init()
 	{
 		Object* obj = new Player;
 		obj->Init();
-		obj->SetPos(297, 260);
+		obj->SetPos(297, 250);
 		ObjectManager::GetInstance()->AddObject(obj, OBJTYPE::PLAYER);
 	}
 	
