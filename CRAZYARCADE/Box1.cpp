@@ -23,7 +23,7 @@ void Box1::Init()
 
 int Box1::Update()
 {
-	return NOEVENT;
+	return LIVE;
 }
 
 void Box1::LateUpdate()
@@ -32,11 +32,8 @@ void Box1::LateUpdate()
 
 void Box1::Render(HDC hdc)
 {
-	HDC memDC = BmpManager::GetInstance()->FindImage(L"image/stage/box1");
-	GdiTransparentBlt(hdc, info.posX, info.posX, 40, 70, memDC, 0, 0, 40, 47, RGB(255, 0, 255));
-
-
-	Rectangle(hdc, 10, 10, 40, 40);
+	HDC memDC = BmpManager::GetInstance()->FindImage(L"Box1");
+	GdiTransparentBlt(hdc, info.posX, info.posX, 40, 47, memDC, 0, 0, 40, 47, RGB(255, 0, 255));
 }
 
 void Box1::Release()

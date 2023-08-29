@@ -99,6 +99,9 @@
     <ClInclude Include="Collider.h">
       <Filter>소스 파일\Collider</Filter>
     </ClInclude>
+    <ClInclude Include="Box1.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CRAZYARCADE.cpp">
@@ -148,6 +151,9 @@
     </ClCompile>
     <ClCompile Include="Collider.cpp">
       <Filter>소스 파일\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="Box1.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

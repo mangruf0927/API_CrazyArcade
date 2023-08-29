@@ -4,6 +4,7 @@
 #include "BmpManager.h"
 #include "ObjectManager.h"
 #include "TileManager.h"
+#include "Box1.h"
 
 Stage1::Stage1()
 {
@@ -36,6 +37,13 @@ void Stage1::Init()
 		obj->SetPos(297, 250);
 		ObjectManager::GetInstance()->AddObject(obj, OBJTYPE::PLAYER);
 	}
+
+
+		Object* box = new Box1;
+		box->Init();
+		box->SetPos(60, 10);
+		ObjectManager::GetInstance()->AddObject(box, OBJTYPE::BLOCK);
+
 	
 	// ¸ó½ºÅÍ (ÂÌÂÌÀÌ 4 / ¹ö·°ÀÌ 2)
 
@@ -50,6 +58,7 @@ void Stage1::Update()
 
 void Stage1::LateUpdate()
 {
+	ObjectManager::GetInstance()->LateUpdate();
 }
 
 void Stage1::Render(HDC hdc)

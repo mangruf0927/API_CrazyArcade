@@ -8,6 +8,7 @@ class Object
 protected:
 	FRAME frame;
 	OBJINFO info;
+	BLOCKTYPE blockType;
 
 public:
 	Object();

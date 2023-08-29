@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClInclude Include="Bmp.h" />
     <ClInclude Include="BmpManager.h" />
+    <ClInclude Include="Box1.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="CRAZYARCADE.h" />
     <ClInclude Include="define.h" />
@@ -154,6 +155,7 @@
   <ItemGroup>
     <ClCompile Include="Bmp.cpp" />
     <ClCompile Include="BmpManager.cpp" />
+    <ClCompile Include="Box1.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="CRAZYARCADE.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
