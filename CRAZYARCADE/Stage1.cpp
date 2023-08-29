@@ -38,12 +38,15 @@ void Stage1::Init()
 		ObjectManager::GetInstance()->AddObject(obj, OBJTYPE::PLAYER);
 	}
 
-
-		Object* box = new Box1;
-		box->Init();
-		box->SetPos(60, 10);
-		ObjectManager::GetInstance()->AddObject(box, OBJTYPE::BLOCK);
-
+	// 박스
+	for(int i = 1; i < 15; i += 2)
+		for (int j = 1; j < 4; j += 2)
+		{
+			Object* box = new Box1;
+			box->Init();
+			box->SetPos(20 + 40 * i, 80 + 40 * j);
+			ObjectManager::GetInstance()->AddObject(box, OBJTYPE::BLOCK);
+		}
 	
 	// 몬스터 (쫄쫄이 4 / 버럭이 2)
 
