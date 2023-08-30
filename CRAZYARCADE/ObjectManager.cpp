@@ -11,7 +11,12 @@ ObjectManager::~ObjectManager()
 
 void ObjectManager::AddObject(Object* obj, OBJTYPE type)
 {
-	objects[type].emplace_back(obj);
+	objects[(UINT)type].emplace_back(obj);
+}
+
+void ObjectManager::AddBlock(Object* block, BLOCKTYPE type)
+{
+	blocks[(UINT)type].emplace_back(block);
 }
 
 void ObjectManager::Update()
@@ -34,7 +39,7 @@ void ObjectManager::Update()
 
 void ObjectManager::LateUpdate()
 {
-	for (int i = 0; i < OBJTYPE::END; ++i)
+	for (int i = 0; i < (UINT)OBJTYPE::END; ++i)
 	{
 		for (auto& Obj : objects[i])
 			Obj->LateUpdate();
@@ -44,7 +49,7 @@ void ObjectManager::LateUpdate()
 
 void ObjectManager::Render(HDC hdc)
 {
-	for (int i = 0; i < OBJTYPE::END; ++i)
+	for (int i = 0; i < (UINT)OBJTYPE::END; ++i)
 	{
 		for (auto& Obj : objects[i])
 		{
@@ -56,7 +61,7 @@ void ObjectManager::Render(HDC hdc)
 
 void ObjectManager::Release()
 {
-	for (int i = 0; i < OBJTYPE::END; ++i)
+	for (int i = 0; i < (UINT)OBJTYPE::END; ++i)
 	{
 		for (auto& Obj : objects[i])
 			objects[i].clear();

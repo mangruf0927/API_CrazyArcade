@@ -127,9 +127,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BlockObject.h" />
     <ClInclude Include="Bmp.h" />
     <ClInclude Include="BmpManager.h" />
     <ClInclude Include="Box1.h" />
+    <ClInclude Include="Box2.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="CRAZYARCADE.h" />
     <ClInclude Include="define.h" />
@@ -146,16 +148,23 @@
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Stage1.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="Tile.h" />
+    <ClInclude Include="Tile.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="TileManager.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="WaterBalloon.h" />
+    <ClInclude Include="WaterFlow.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BlockObject.cpp" />
     <ClCompile Include="Bmp.cpp" />
     <ClCompile Include="BmpManager.cpp" />
     <ClCompile Include="Box1.cpp" />
+    <ClCompile Include="Box2.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="CRAZYARCADE.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
@@ -170,11 +179,16 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Stage1.cpp" />
-    <ClCompile Include="Tile.cpp" />
+    <ClCompile Include="Tile.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="TileManager.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="WaterBalloon.cpp" />
+    <ClCompile Include="WaterFlow.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="CRAZYARCADE.rc" />

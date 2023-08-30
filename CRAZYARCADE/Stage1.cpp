@@ -5,6 +5,9 @@
 #include "ObjectManager.h"
 #include "TileManager.h"
 #include "Box1.h"
+#include "Box2.h"
+#include "BlockObject.h"
+#include "Collider.h"
 
 Stage1::Stage1()
 {
@@ -38,16 +41,36 @@ void Stage1::Init()
 		ObjectManager::GetInstance()->AddObject(obj, OBJTYPE::PLAYER);
 	}
 
-	// 박스
+	// 박스1
 	for(int i = 1; i < 15; i += 2)
-		for (int j = 1; j < 4; j += 2)
+		for (int j = 0; j < 3; j += 2)
 		{
 			Object* box = new Box1;
 			box->Init();
 			box->SetPos(20 + 40 * i, 80 + 40 * j);
-			ObjectManager::GetInstance()->AddObject(box, OBJTYPE::BLOCK);
+			ObjectManager::GetInstance()->AddObject(box, OBJTYPE::BOX);
 		}
 	
+	// 박스 2
+	for (int i = 1; i < 15; i += 2)
+		for (int j = 0; j < 3; j += 2)
+		{
+			Object* box = new Box2;
+			box->Init();
+			box->SetPos(20 + 40 * i, 240 + 40 * j);
+			ObjectManager::GetInstance()->AddObject(box, OBJTYPE::PUSHBOX);
+		}
+
+	//오브젝트 1
+	for(int i = 0; i < 15; i+=2)
+		for (int j = 0; j < 1; j++)
+		{
+			Object* block = new BlockObject;
+			block->Init();
+			block->SetObjName(L"OBJ3");
+			block->SetPos(20 + 40 * i, 80 + 40 * j);
+			ObjectManager::GetInstance()->AddObject(block, OBJTYPE::OBJECT);
+		}
 	// 몬스터 (쫄쫄이 4 / 버럭이 2)
 
 
@@ -61,7 +84,12 @@ void Stage1::Update()
 
 void Stage1::LateUpdate()
 {
-	ObjectManager::GetInstance()->LateUpdate();
+	ObjectManager::GetInstance()->LateUpdate(); 
+	
+	// 플레이어 - 블럭오브젝트 충돌
+	Collider::CollisionRect(ObjectManager::GetInstance()->GetObjects(OBJTYPE::OBJECT), ObjectManager::GetInstance()->GetPlayer());
+	Collider::CollisionRect(ObjectManager::GetInstance()->GetObjects(OBJTYPE::BOX), ObjectManager::GetInstance()->GetPlayer());
+	
 }
 
 void Stage1::Render(HDC hdc)
@@ -71,9 +99,6 @@ void Stage1::Render(HDC hdc)
 
 	memDC = BmpManager::GetInstance()->FindImage(L"Bazzi_");
 	GdiTransparentBlt(hdc, 661, 104, 42, 33, memDC, 0, 0, 91, 73, RGB(255, 0, 255));
-
-
-	//TileManager::GetInstance()->Render(hdc);
 
 	ObjectManager::GetInstance()->Render(hdc);
 }

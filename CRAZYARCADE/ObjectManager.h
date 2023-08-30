@@ -8,7 +8,8 @@ class ObjectManager
 {
 	SINGLETONE(ObjectManager)
 private:
-	vector<Object*> objects[OBJTYPE::END];
+	vector<Object*> objects[(UINT)OBJTYPE::END];
+	vector<Object*> blocks[(UINT)BLOCKTYPE::END];
 
 public:
 	ObjectManager();
@@ -20,8 +21,8 @@ public:
 	void Release();
 	
 	void AddObject(Object* obj, OBJTYPE type);
+	void AddBlock(Object* obj, BLOCKTYPE type);
 
-	/*void PickBlock(Object* obj, BLOCKTYPE blockType);
-	void SaveBlock();
-	void LoadBlock();*/
+	Object* GetPlayer() { return objects[(UINT)OBJTYPE::PLAYER].front(); }
+	vector<Object*> GetObjects(OBJTYPE type) { return objects[(UINT)type]; }
 };

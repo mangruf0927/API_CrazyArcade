@@ -28,3 +28,5 @@ void Object::UpdateFrame(HWND hWnd)
 	}
 }
 
+
+

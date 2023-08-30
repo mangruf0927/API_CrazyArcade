@@ -28,18 +28,18 @@ void WaterBalloon::Init()
 
     frame.Cur = frame.Start;
     frame.Timer = GetTickCount();
-    BoomTime = GetTickCount();
+    boomTime = GetTickCount();
 }
 
 int WaterBalloon::Update()
 {
-    if (GetTickCount() >= BoomTime + 3000) // 1000 = 1ÃÊ
+    if (GetTickCount() >= boomTime + 3000) // 1000 = 1ÃÊ
     {
         curState = L"Pop";
     }
     UpdateFrame(g_hWnd);
 
-    if (GetTickCount() >= BoomTime + 4000)
+    if (GetTickCount() >= boomTime + 4000)
     {
         return DEAD;
     }
@@ -48,6 +48,7 @@ int WaterBalloon::Update()
 
 void WaterBalloon::LateUpdate()
 {
+    
 }
 
 
@@ -62,6 +63,7 @@ void WaterBalloon::Render(HDC hdc)
         frame.Speed = 100.f;
         HDC memDC = BmpManager::GetInstance()->FindImage(L"Bomb");
         GdiTransparentBlt(hdc, info.posX, info.posY, 40, 40, memDC, frame.Cur * 56, 0, 56, 54, RGB(255, 0, 255));
+        Rectangle(hdc, centerPos.x - 20, centerPos.y - 20, centerPos.x + 20, centerPos.y + 20);
     }
     if (curState == L"Pop")
     {

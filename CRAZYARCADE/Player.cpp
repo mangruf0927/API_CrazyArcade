@@ -31,8 +31,8 @@ void Player::Init()
     curState = L"Idle";
 
     //Pos = { 15, 20 };
-    info.sizeX = 50;
-    info.sizeY = 60;
+    info.sizeX = 45;
+    info.sizeY = 55;
 
     frame.Cur = frame.Start;
     frame.Timer = GetTickCount();
@@ -43,6 +43,10 @@ int Player::Update()
 {
     KeyUpdate();
     UpdateFrame(g_hWnd);
+    
+    SetCenter();
+    SetRect();
+    
     
     if (curState == L"Bubble")
     {
@@ -98,7 +102,8 @@ void Player::Render(HDC hdc)
         frame.Speed = 3.f;
         memDC = BmpManager::GetInstance()->FindImage(L"Idle");
         GdiTransparentBlt(hdc, info.posX, info.posY, info.sizeX, info.sizeY, memDC, frame.Start * 64, 0, 64, 76, RGB(255, 0, 255));
-        //Rectangle(hdc, Info.Pos.x + 5, Info.Pos.y + 20, Info.Pos.x + 45, Info.Pos.y + 60);
+        //Rectangle(hdc, centerPos.x - 20, centerPos.y - 20, centerPos.x + 20, centerPos.y + 20);
+        Rectangle(hdc, rect.left, rect.top, rect.right, rect.bottom);
     }
     if (curState == L"Up")
     {
@@ -107,6 +112,7 @@ void Player::Render(HDC hdc)
         frame.Speed = 8.f;
         memDC = BmpManager::GetInstance()->FindImage(L"Up");
         GdiTransparentBlt(hdc, info.posX, info.posY, info.sizeX, info.sizeY, memDC, frame.Cur * 64, 0, 64, 76, RGB(255, 0, 255));
+        Rectangle(hdc, rect.left, rect.top, rect.right, rect.bottom);
     }
     if (curState == L"Right")
     {
@@ -115,7 +121,7 @@ void Player::Render(HDC hdc)
         frame.Speed = 6.f;
         memDC = BmpManager::GetInstance()->FindImage(L"Right");
         GdiTransparentBlt(hdc, info.posX, info.posY, info.sizeX, info.sizeY, memDC, frame.Cur * 64, 0, 64, 76, RGB(255, 0, 255));
-
+        Rectangle(hdc, rect.left, rect.top, rect.right, rect.bottom);
     }
     if (curState == L"Left")
     {
@@ -124,6 +130,7 @@ void Player::Render(HDC hdc)
         frame.Speed = 6.f;
         memDC = BmpManager::GetInstance()->FindImage(L"Left");
         GdiTransparentBlt(hdc, info.posX, info.posY, info.sizeX, info.sizeY, memDC, frame.Cur * 64, 0, 64, 76, RGB(255, 0, 255));
+        Rectangle(hdc, rect.left, rect.top, rect.right, rect.bottom);
     }
     if (curState == L"Down")
     {
@@ -132,6 +139,7 @@ void Player::Render(HDC hdc)
         frame.Speed = 8.f;
         memDC = BmpManager::GetInstance()->FindImage(L"Down");
         GdiTransparentBlt(hdc, info.posX, info.posY, info.sizeX, info.sizeY, memDC, frame.Cur * 64, 0, 64, 76, RGB(255, 0, 255));
+        Rectangle(hdc, rect.left, rect.top, rect.right, rect.bottom);
     }
 
     HDC memDC2 = BmpManager::GetInstance()->FindImage(L"Arrow");
@@ -149,7 +157,8 @@ void Player::CreateBalloon()
     if (curState != L"Bubble" && curState != L"Dead")
     {
         Object* balloon = new WaterBalloon();
-        balloon->SetPos((int)((info.posX + 5) / 40) * 40 + 20, (int)((info.posY + 19) / 40) * 40 + 40);
+        balloon->SetPos((int)((info.posX + 5) / 40) * 40 + 20, (int)((info.posY + 5) / 40) * 40 + 40);
+        //balloon->SetPos((int)((info.posX + 5) / 40) * 40 + 20, (int)((info.posY + 19) / 40) * 40 + 40);
         balloon->Init();
         ObjectManager::GetInstance()->AddObject(balloon, OBJTYPE::BALLOON);
     }

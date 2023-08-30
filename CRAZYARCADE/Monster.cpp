@@ -11,6 +11,8 @@ void Monster::Init()
 
 int Monster::Update()
 {
+	UpdateFrame(g_hWnd);
+
 	return LIVE;
 }
 

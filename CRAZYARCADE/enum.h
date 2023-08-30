@@ -1,12 +1,14 @@
 #pragma once
 
-enum OBJTYPE
+enum class OBJTYPE
 {
 	DEFAULT, 
-	TILE, 
-	BLOCK,
+	PUSHBOX, 
+	BOX,
+	OBJECT,
 	ITEM,
 	BALLOON, 
+	FLOW,
 	PLAYER, 
 	MONSTER, 
 	END
