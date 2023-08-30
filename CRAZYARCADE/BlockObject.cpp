@@ -52,7 +52,6 @@ void BlockObject::Render(HDC hdc)
 	{
 		memDC = BmpManager::GetInstance()->FindImage(L"OBJ3"); // ³ë
 		GdiTransparentBlt(hdc, info.posX, info.posY - 20, 40, 60, memDC, 0, 0, 40, 60, RGB(255, 0, 255));
-		//Rectangle(hdc, centerPos.x - 20, centerPos.y - 20, centerPos.x + 20, centerPos.y + 20);
 		//Rectangle(hdc, rect.left, rect.top, rect.right, rect.bottom);
 	}
 	if (objName == L"OBJ4")
