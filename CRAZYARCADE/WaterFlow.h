@@ -20,4 +20,7 @@ public:
 	virtual void Release() override;
 
 	void SetWavePower(int power) { wavePower = power; }
+	
+	void SetCenter() { centerPos.x = info.posX + info.sizeX * 0.5f, centerPos.y = info.posY + info.sizeY * 0.5f; }
+	void SetRect() { rect.left = centerPos.x - 20, rect.right = centerPos.x + 20, rect.top = centerPos.y - 20, rect.bottom = centerPos.y + 20; }
 };

@@ -36,6 +36,8 @@ void Player::Init()
 
     frame.Cur = frame.Start;
     frame.Timer = GetTickCount();
+
+    dwTime = GetTickCount();
 }
 
 
@@ -49,8 +51,8 @@ int Player::Update()
     
     
     if (curState == L"Trap")
-    {
-        if (dwTime + 6000 < GetTickCount())
+    { 
+        if (dwTime + 4000 < GetTickCount())
         {
             curState = L"Dead";
             dwTime = GetTickCount();
@@ -61,7 +63,7 @@ int Player::Update()
     {
         if (dwTime + 2000 < GetTickCount())
         {
-            dwTime = GetTickCount();
+            //dwTime = GetTickCount();
             //CSceneManager::Get_Instance()->Scene_Change(CSceneManager::SCENE_MENU);
             return DEAD;
         }
@@ -140,22 +142,22 @@ void Player::Render(HDC hdc)
         GdiTransparentBlt(hdc, info.posX, info.posY, info.sizeX, info.sizeY, memDC, frame.Cur * 64, 0, 64, 76, RGB(255, 0, 255));
         //Rectangle(hdc, rect.left, rect.top, rect.right, rect.bottom);
     }
-    if (curState == L"Trap")
+    if (curState == L"Trap") // 88 X 144
     {
         frame.Start = 0;
-        frame.End = 7;
-        frame.Speed = 8.f;
+        frame.End = 12;
+        frame.Speed = 24.f;
         memDC = BmpManager::GetInstance()->FindImage(L"Trap");
-        GdiTransparentBlt(hdc, info.posX, info.posY, info.sizeX, info.sizeY, memDC, frame.Cur * 64, 0, 64, 76, RGB(255, 0, 255));
+        GdiTransparentBlt(hdc, info.posX, info.posY, info.sizeX + 5, info.sizeY + 38, memDC, frame.Cur * 88, 0, 88, 144, RGB(255, 0, 255));
         //Rectangle(hdc, rect.left, rect.top, rect.right, rect.bottom);
     }
     if (curState == L"Dead")
     {
         frame.Start = 0;
-        frame.End = 7;
-        frame.Speed = 8.f;
+        frame.End = 12;
+        frame.Speed = 12.f;
         memDC = BmpManager::GetInstance()->FindImage(L"Dead");
-        GdiTransparentBlt(hdc, info.posX, info.posY, info.sizeX, info.sizeY, memDC, frame.Cur * 64, 0, 64, 76, RGB(255, 0, 255));
+        GdiTransparentBlt(hdc, info.posX, info.posY, info.sizeX + 5, info.sizeY + 38, memDC, frame.Cur * 88, 0, 88, 144, RGB(255, 0, 255));
         //Rectangle(hdc, rect.left, rect.top, rect.right, rect.bottom);
     }
 

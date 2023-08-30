@@ -19,7 +19,7 @@ Stage1::~Stage1()
 void Stage1::Init()
 {
 	// ¹è°æ
-	BmpManager::GetInstance()->InsertBmp(L"Background", L"Image/stage1/Background.bmp");
+	BmpManager::GetInstance()->InsertBmp(L"Background", L"Image/stage/Background.bmp");
 	BmpManager::GetInstance()->InsertBmp(L"Bazzi_", L"Image/UI/IngameBazzi.bmp");
 
 	BmpManager::GetInstance()->InsertBmp(L"Box1", L"Image/stage/Box1.bmp");

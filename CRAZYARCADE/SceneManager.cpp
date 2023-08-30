@@ -1,5 +1,6 @@
 #include "SceneManager.h"
 #include "define.h"
+#include "Lobby.h"
 #include "Stage1.h"
 
 SceneManager::SceneManager()
@@ -18,17 +19,11 @@ SceneManager::~SceneManager()
 
 void SceneManager::Init()
 {
-	//Scene 생성
-	/*Scenes[(UINT)SCENETYPE::START] = new Start;
-	Scenes[(UINT)SCENETYPE::START2] = new Stage2;
-	Scenes[(UINT)SCENETYPE::START3] = new Stage3;*/
-
-	Scenes[(UINT)SCENETYPE::STAGE1] = new Stage1;
-	Scenes[(UINT)SCENETYPE::STAGE1]->SetName(L"STAGE1");
-
+	Scenes[(UINT)SCENETYPE::LOBBY] = new Lobby;
+	Scenes[(UINT)SCENETYPE::LOBBY]->SetName(L"LOBBY");
 
 	//현재 씬 지정
-	curScene = Scenes[(UINT)SCENETYPE::STAGE1];
+	curScene = Scenes[(UINT)SCENETYPE::LOBBY];
 	curScene->Init();
 }
 
@@ -55,5 +50,9 @@ void SceneManager::Release()
 
 void SceneManager::ChangeScene(SCENETYPE type)
 {
-	//curScene = Scenes[(UINT)type];
+	Scenes[(UINT)SCENETYPE::STAGE1] = new Stage1;
+	Scenes[(UINT)SCENETYPE::STAGE1]->SetName(L"STAGE1");
+
+	curScene = Scenes[(UINT)SCENETYPE::STAGE1];
+	curScene->Init();
 }

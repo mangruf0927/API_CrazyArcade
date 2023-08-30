@@ -102,6 +102,9 @@
     <ClInclude Include="WaterFlow.h">
       <Filter>소스 파일\Object</Filter>
     </ClInclude>
+    <ClInclude Include="Lobby.h">
+      <Filter>소스 파일\Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CRAZYARCADE.cpp">
@@ -158,6 +161,9 @@
     <ClCompile Include="WaterFlow.cpp">
       <Filter>소스 파일\Object</Filter>
     </ClCompile>
+    <ClCompile Include="Lobby.cpp">
+      <Filter>소스 파일\Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="CRAZYARCADE.rc">
@@ -171,5 +177,13 @@
     <Image Include="CRAZYARCADE.ico">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="..\..\WinApiGame\WinApiGame\Image\cursor.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\winapigame\winapigame\image\cursor1.cur">
+      <Filter>리소스 파일</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -40,7 +40,8 @@ int WaterFlow::Update()
     if (isDead) return DEAD;
 
     UpdateFrame(g_hWnd);
-
+    SetCenter();
+    SetRect();
     return LIVE;
 }
 
@@ -64,6 +65,7 @@ void WaterFlow::Render(HDC hdc)
         frame.Speed = 50.f;
         memDC = BmpManager::GetInstance()->FindImage(L"Center");
         GdiTransparentBlt(hdc, info.posX, info.posY, 40, 40, memDC, frame.Cur * 52, 0, 52, 52, RGB(255, 0, 255));
+        Rectangle(hdc, centerPos.x - 20, centerPos.y - 20, centerPos.x + 20, centerPos.y + 20);
     }
     if (objName == L"UpEdge")
     {

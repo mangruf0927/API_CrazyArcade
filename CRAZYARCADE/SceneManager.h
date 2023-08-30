@@ -11,7 +11,9 @@ class SceneManager
 private:
 	Scene* Scenes[(UINT)SCENETYPE::END]; // ¸ðµç ¾À ¸ñ·Ï
 	Scene* curScene; // ÇöÀç ¾À
-	static SceneManager* Instance;
+	
+	SCENETYPE nextscene;
+	SCENETYPE curscene;
 
 public:
 	SceneManager();

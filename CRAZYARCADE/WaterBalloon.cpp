@@ -42,9 +42,7 @@ int WaterBalloon::Update()
 {
     if (isDead) 
     {
-        /*curState = L"Pop";*/
         CreateWave();
-
         return DEAD;
     }
 
@@ -77,7 +75,7 @@ void WaterBalloon::Render(HDC hdc)
     frame.Speed = 100.f;
     HDC memDC = BmpManager::GetInstance()->FindImage(L"Bomb");
     GdiTransparentBlt(hdc, info.posX, info.posY, 40, 40, memDC, frame.Cur * 56, 0, 56, 54, RGB(255, 0, 255));
-    Rectangle(hdc, centerPos.x - 20, centerPos.y - 20, centerPos.x + 20, centerPos.y + 20);
+    //Rectangle(hdc, centerPos.x - 20, centerPos.y - 20, centerPos.x + 20, centerPos.y + 20);
 
 }
 

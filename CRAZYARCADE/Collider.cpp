@@ -38,8 +38,6 @@ void Collider::CollisionRect(vector<Object*> _obj1, Object* player)
 	{
 		if (CheckRect(obj, player, &moveX, &moveY))
 		{
-			cout << "충돌했다" << endl;
-
 			float x = player->GetInfo().posX;
 			float y = player->GetInfo().posY;
 
@@ -95,24 +93,3 @@ void Collider::CollisionWave(vector<Object*> obj1, vector<Object*> obj2, OBJTYPE
 }
 
 
-
-
-//bool Collider::CheckCollision(vector<Object*> _obj1, vector<Object*> _obj2)
-//{
-//	RECT rt = {};
-//
-//	for (auto& obj1 : _obj1)
-//	{
-//		for (auto& obj2 : _obj2)
-//		{
-//			if (IntersectRect(&rt, &obj1->GetRect(), &obj2->GetRect()) != 0)
-//			{
-//				return true;
-//			}
-//			else
-//			{
-//				return false;
-//			}
-//		}
-//	}
-//}
