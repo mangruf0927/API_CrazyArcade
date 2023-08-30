@@ -8,6 +8,11 @@ private:
 	const TCHAR* curState; // 물풍선 상태 
 	unsigned long boomTime;
 
+	int rightPower;
+	int leftPower;
+	int upPower;
+	int downPower;
+
 public:
 	WaterBalloon();
 	~WaterBalloon();
@@ -17,4 +22,6 @@ public:
 	virtual void LateUpdate() override;
 	virtual void Render(HDC hdc) override;
 	virtual void Release() override;
+
+	void CreateWave();
 };

@@ -4,8 +4,9 @@
 class WaterFlow :public Object
 {
 private:
+	const TCHAR* waveDir;
 	int wavePower;
-	enum DIR { up, down, left, right, upEdge, downEdge, leftEdge, rightEdge };
+	//enum DIR { up, down, left, right, upEdge, downEdge, leftEdge, rightEdge };
  	unsigned long waveTime;
 
 public:
@@ -20,4 +21,3 @@ public:
 
 	void SetWavePower(int power) { wavePower = power; }
 };
-

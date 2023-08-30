@@ -19,12 +19,16 @@ void Box1::Init()
 
 	info.sizeX = 40;
 	info.sizeY = 47;
+
+	isDead = false;
 }
 
 int Box1::Update()
 {
 	SetCenter();
 	SetRect();
+
+	if (isDead) return DEAD;
 	return LIVE;
 }
 

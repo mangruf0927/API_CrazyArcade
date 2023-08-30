@@ -23,8 +23,8 @@ void Player::Init()
     BmpManager::GetInstance()->InsertBmp(L"Up", L"Image/player/Bazzi/up.bmp");
 
     BmpManager::GetInstance()->InsertBmp(L"Trap", L"Image/player/Bazzi/trap.bmp");
-    BmpManager::GetInstance()->InsertBmp(L"Die", L"Image/player/Bazzi/die.bmp");
-    BmpManager::GetInstance()->InsertBmp(L"Live", L"Image/player/Bazzi/live.bmp");
+    BmpManager::GetInstance()->InsertBmp(L"Dead", L"Image/player/Bazzi/die.bmp");
+    //BmpManager::GetInstance()->InsertBmp(L"Live", L"Image/player/Bazzi/live.bmp");
     
     BmpManager::GetInstance()->InsertBmp(L"Arrow", L"Image/player/solo_player.bmp");
 
@@ -48,7 +48,7 @@ int Player::Update()
     SetRect();
     
     
-    if (curState == L"Bubble")
+    if (curState == L"Trap")
     {
         if (dwTime + 6000 < GetTickCount())
         {
@@ -102,8 +102,7 @@ void Player::Render(HDC hdc)
         frame.Speed = 3.f;
         memDC = BmpManager::GetInstance()->FindImage(L"Idle");
         GdiTransparentBlt(hdc, info.posX, info.posY, info.sizeX, info.sizeY, memDC, frame.Start * 64, 0, 64, 76, RGB(255, 0, 255));
-        //Rectangle(hdc, centerPos.x - 20, centerPos.y - 20, centerPos.x + 20, centerPos.y + 20);
-        Rectangle(hdc, rect.left, rect.top, rect.right, rect.bottom);
+        //Rectangle(hdc, rect.left, rect.top, rect.right, rect.bottom);
     }
     if (curState == L"Up")
     {
@@ -112,7 +111,7 @@ void Player::Render(HDC hdc)
         frame.Speed = 8.f;
         memDC = BmpManager::GetInstance()->FindImage(L"Up");
         GdiTransparentBlt(hdc, info.posX, info.posY, info.sizeX, info.sizeY, memDC, frame.Cur * 64, 0, 64, 76, RGB(255, 0, 255));
-        Rectangle(hdc, rect.left, rect.top, rect.right, rect.bottom);
+        //Rectangle(hdc, rect.left, rect.top, rect.right, rect.bottom);
     }
     if (curState == L"Right")
     {
@@ -121,7 +120,7 @@ void Player::Render(HDC hdc)
         frame.Speed = 6.f;
         memDC = BmpManager::GetInstance()->FindImage(L"Right");
         GdiTransparentBlt(hdc, info.posX, info.posY, info.sizeX, info.sizeY, memDC, frame.Cur * 64, 0, 64, 76, RGB(255, 0, 255));
-        Rectangle(hdc, rect.left, rect.top, rect.right, rect.bottom);
+        //Rectangle(hdc, rect.left, rect.top, rect.right, rect.bottom);
     }
     if (curState == L"Left")
     {
@@ -130,7 +129,7 @@ void Player::Render(HDC hdc)
         frame.Speed = 6.f;
         memDC = BmpManager::GetInstance()->FindImage(L"Left");
         GdiTransparentBlt(hdc, info.posX, info.posY, info.sizeX, info.sizeY, memDC, frame.Cur * 64, 0, 64, 76, RGB(255, 0, 255));
-        Rectangle(hdc, rect.left, rect.top, rect.right, rect.bottom);
+        //Rectangle(hdc, rect.left, rect.top, rect.right, rect.bottom);
     }
     if (curState == L"Down")
     {
@@ -139,7 +138,25 @@ void Player::Render(HDC hdc)
         frame.Speed = 8.f;
         memDC = BmpManager::GetInstance()->FindImage(L"Down");
         GdiTransparentBlt(hdc, info.posX, info.posY, info.sizeX, info.sizeY, memDC, frame.Cur * 64, 0, 64, 76, RGB(255, 0, 255));
-        Rectangle(hdc, rect.left, rect.top, rect.right, rect.bottom);
+        //Rectangle(hdc, rect.left, rect.top, rect.right, rect.bottom);
+    }
+    if (curState == L"Trap")
+    {
+        frame.Start = 0;
+        frame.End = 7;
+        frame.Speed = 8.f;
+        memDC = BmpManager::GetInstance()->FindImage(L"Trap");
+        GdiTransparentBlt(hdc, info.posX, info.posY, info.sizeX, info.sizeY, memDC, frame.Cur * 64, 0, 64, 76, RGB(255, 0, 255));
+        //Rectangle(hdc, rect.left, rect.top, rect.right, rect.bottom);
+    }
+    if (curState == L"Dead")
+    {
+        frame.Start = 0;
+        frame.End = 7;
+        frame.Speed = 8.f;
+        memDC = BmpManager::GetInstance()->FindImage(L"Dead");
+        GdiTransparentBlt(hdc, info.posX, info.posY, info.sizeX, info.sizeY, memDC, frame.Cur * 64, 0, 64, 76, RGB(255, 0, 255));
+        //Rectangle(hdc, rect.left, rect.top, rect.right, rect.bottom);
     }
 
     HDC memDC2 = BmpManager::GetInstance()->FindImage(L"Arrow");

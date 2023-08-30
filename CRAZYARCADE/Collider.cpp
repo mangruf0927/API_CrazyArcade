@@ -1,5 +1,6 @@
 #include "Collider.h"
 #include "Object.h"
+#include "Player.h"
 
 
 Collider::Collider()
@@ -10,22 +11,6 @@ Collider::~Collider()
 {
 }
 
-bool Collider::CheckCollision(vector<Object*> _obj1, vector<Object*> _obj2)
-{
-	RECT rect;
-	for (auto& obj1 : _obj1)
-	{
-		for (auto& obj2 : _obj2)
-		{
-			if (IntersectRect(&rect, &obj1->GetRect(), &obj2->GetRect()) != 0)
-			{
-				return true;
-			}
-		}
-	}
-	return false;
-
-}
 
 bool Collider::CheckRect(Object* obj1, Object* obj2, float* x, float* y)
 {
@@ -45,43 +30,9 @@ bool Collider::CheckRect(Object* obj1, Object* obj2, float* x, float* y)
 }
 
 
-
 void Collider::CollisionRect(vector<Object*> _obj1, Object* player)
 {
-	//float moveX = 0.1f, moveY = 0.1f;
-
-	//RECT rect;
-	//for (auto& obj1 : _obj1)
-	//{
-	//	for (auto& obj2 : _obj2)
-	//	{
-	//		if (IntersectRect(&rect, &obj1->GetRect(), &obj2->GetRect()))
-	//		{
-	//			if (obj1->GetInfo().posY < obj2->GetInfo().posY)
-	//			{
-	//				obj1->SetPos(obj1->GetPos(), obj1->GetInfo().posY - moveY);
-	//			}
-	//			else
-	//			{
-	//				obj1->SetPos(obj1->GetInfo().posX, obj1->GetInfo().posY + moveY);
-	//			}
-
-
-	//			if (obj1->GetInfo().posX < obj2->GetInfo().posX)
-	//			{
-	//				obj1->SetPos(obj1->GetInfo().posX - moveX, obj1->GetInfo().posY);
-	//			}
-	//			else
-	//			{
-	//				obj1->SetPos(obj1->GetInfo().posX + moveX, obj1->GetInfo().posY);
-	//			}
-
-	//		}
-	//	}
-
-
-	float moveX, moveY;
-
+	float moveX = 0.1f, moveY = 0.1f;
 
 	for (auto& obj : _obj1)
 	{
@@ -114,6 +65,31 @@ void Collider::CollisionRect(vector<Object*> _obj1, Object* player)
 					player->SetPos(x + moveX, y);
 				}
 			}
+		}
+	}
+}
+
+void Collider::CollisionWave(vector<Object*> obj1, vector<Object*> obj2, OBJTYPE type1, OBJTYPE type2)
+{
+	RECT rc = {};
+
+	for (auto& OBJ1 : obj1)
+	{
+		for (auto& OBJ2 : obj2)
+		{
+			if (IntersectRect(&rc, &OBJ1->GetRect(), &OBJ2->GetRect()))
+			{
+				if (type1 == OBJTYPE::FLOW && type2 == OBJTYPE::PLAYER)
+				{
+					dynamic_cast<Player*>(OBJ2)->SetBubbleState();
+				}
+
+				if (type1 == OBJTYPE::FLOW && type2 == OBJTYPE::BOX)
+				{
+					OBJ2->SetDead();
+				}
+			}
+
 		}
 	}
 }

@@ -3,7 +3,6 @@
 #include "Player.h"
 #include "BmpManager.h"
 #include "ObjectManager.h"
-#include "TileManager.h"
 #include "Box1.h"
 #include "Box2.h"
 #include "BlockObject.h"
@@ -50,6 +49,15 @@ void Stage1::Init()
 			box->SetPos(20 + 40 * i, 80 + 40 * j);
 			ObjectManager::GetInstance()->AddObject(box, OBJTYPE::BOX);
 		}
+
+	for (int i = 1; i < 15; i += 2)
+		for (int j = 10; j < 13; j += 2)
+		{
+			Object* box = new Box1;
+			box->Init();
+			box->SetPos(20 + 40 * i, 40 * j);
+			ObjectManager::GetInstance()->AddObject(box, OBJTYPE::BOX);
+		}
 	
 	// 박스 2
 	for (int i = 1; i < 15; i += 2)
@@ -62,15 +70,54 @@ void Stage1::Init()
 		}
 
 	//오브젝트 1
-	for(int i = 0; i < 15; i+=2)
-		for (int j = 0; j < 1; j++)
-		{
-			Object* block = new BlockObject;
-			block->Init();
-			block->SetObjName(L"OBJ3");
-			block->SetPos(20 + 40 * i, 80 + 40 * j);
-			ObjectManager::GetInstance()->AddObject(block, OBJTYPE::OBJECT);
-		}
+	for (int i = 0; i < 15; i += 2)
+	{
+		Object* block = new BlockObject;
+		block->Init();
+		block->SetObjName(L"OBJ1");
+		block->SetPos(20 + 40 * i, 80);
+		ObjectManager::GetInstance()->AddObject(block, OBJTYPE::OBJECT);
+	}
+	for (int i = 0; i < 15; i += 2)
+	{
+		Object* block = new BlockObject;
+		block->Init();
+		block->SetObjName(L"OBJ2");
+		block->SetPos(20 + 40 * i, 160);
+		ObjectManager::GetInstance()->AddObject(block, OBJTYPE::OBJECT);
+	}
+	for (int i = 0; i < 15; i += 2)
+	{
+		Object* block = new BlockObject;
+		block->Init();
+		block->SetObjName(L"OBJ3");
+		block->SetPos(20 + 40 * i, 240);
+		ObjectManager::GetInstance()->AddObject(block, OBJTYPE::OBJECT);
+	}
+	for (int i = 0; i < 15; i += 2)
+	{
+		Object* block = new BlockObject;
+		block->Init();
+		block->SetObjName(L"OBJ4");
+		block->SetPos(20 + 40 * i, 320);
+		ObjectManager::GetInstance()->AddObject(block, OBJTYPE::OBJECT);
+	}
+	for (int i = 0; i < 15; i += 2)
+	{
+		Object* block = new BlockObject;
+		block->Init();
+		block->SetObjName(L"OBJ3");
+		block->SetPos(20 + 40 * i, 400);
+		ObjectManager::GetInstance()->AddObject(block, OBJTYPE::OBJECT);
+	}
+	for (int i = 0; i < 15; i += 2)
+	{
+		Object* block = new BlockObject;
+		block->Init();
+		block->SetObjName(L"OBJ2");
+		block->SetPos(20 + 40 * i, 480);
+		ObjectManager::GetInstance()->AddObject(block, OBJTYPE::OBJECT);
+	}
 	// 몬스터 (쫄쫄이 4 / 버럭이 2)
 
 
@@ -89,6 +136,8 @@ void Stage1::LateUpdate()
 	// 플레이어 - 블럭오브젝트 충돌
 	Collider::CollisionRect(ObjectManager::GetInstance()->GetObjects(OBJTYPE::OBJECT), ObjectManager::GetInstance()->GetPlayer());
 	Collider::CollisionRect(ObjectManager::GetInstance()->GetObjects(OBJTYPE::BOX), ObjectManager::GetInstance()->GetPlayer());
+	Collider::CollisionWave(ObjectManager::GetInstance()->GetObjects(OBJTYPE::FLOW), ObjectManager::GetInstance()->GetObjects(OBJTYPE::PLAYER), OBJTYPE::FLOW, OBJTYPE::PLAYER);
+	Collider::CollisionWave(ObjectManager::GetInstance()->GetObjects(OBJTYPE::FLOW), ObjectManager::GetInstance()->GetObjects(OBJTYPE::BOX), OBJTYPE::FLOW, OBJTYPE::BOX);
 	
 }
 
@@ -96,7 +145,7 @@ void Stage1::Render(HDC hdc)
 {
 	HDC memDC = BmpManager::GetInstance()->FindImage(L"Background");
 	BitBlt(hdc, 0, 0, 800, 598, memDC, 0, 0, SRCCOPY);
-
+	
 	memDC = BmpManager::GetInstance()->FindImage(L"Bazzi_");
 	GdiTransparentBlt(hdc, 661, 104, 42, 33, memDC, 0, 0, 91, 73, RGB(255, 0, 255));
 

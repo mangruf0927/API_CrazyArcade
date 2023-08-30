@@ -44,6 +44,6 @@ public:
 	RECT& GetRect() { return rect; }
 
 	void SetDead() { isDead = true; }
-	bool GetDead() { return isDead; }
+	//bool GetDead() { return isDead; }
 };
 
